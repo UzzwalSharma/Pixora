@@ -30,21 +30,20 @@ const HeroSection = () => {
 
 
       {/* Content */}
-      <div className="relative z-20 w-full px-8 py-16 flex flex-col md:flex-row items-center justify-between">
-        <div className="md:w-2/3 lg:w-1/2 space-y-6 pointer-events-auto">
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-2xl neon-text">
-            Transform Designs into Reality with Pixora Pro
-          </h1>
-          <p className="text-lg md:text-xl text-gray-100 drop-shadow-md">
-            Just upload your UI and let Pixora turn it into a powerful full-stack website — fast, modern, and fully tailored to your needs.
-          </p>
-        </div>
-      </div>
+      <div className="relative z-20 w-full px-8 py-16 flex flex-col items-start justify-center space-y-6">
+  <h1 className="text-4xl md:text-6xl font-extrabold leading-tight drop-shadow-[0_0_20px_rgba(0,255,191,0.7)]">
+    Transform Designs into Reality with <br /><span className="text-[#00ffbf]">Pixora Pro</span>
+  </h1>
+
+  <p className="text-lg md:text-xl text-gray-200 drop-shadow-md max-w-3xl">
+    Just upload your UI and let Pixora turn it into a powerful full-stack website — fast, modern, and fully tailored to your needs.
+  </p>
+</div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-6 w-full text-center z-30">
-        <a href="#why-choose-us" className="text-green-300 hover:text-white transition-all duration-300">
-          <FaChevronDown className="animate-bounce text-3xl glow" />
+      <div className="absolute bottom-6 w-full z-30 flex justify-center">
+        <a href="#why-choose-us" className="text-green-300 hover:text-white transition-all duration-300 flex flex-col items-center">
+          <FaChevronDown className="animate-bounce text-3xl drop-shadow-glow" />
           <p className="mt-1 text-sm uppercase tracking-widest font-semibold">Scroll Down</p>
         </a>
       </div>
