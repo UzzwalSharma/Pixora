@@ -28,7 +28,7 @@ const FullstackForm = () => {
   
       // Send the request to the backend to trigger the email
       try {
-        const response = await fetch("/api/sendEmail", {
+        const response = await fetch("/sendEmail", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
