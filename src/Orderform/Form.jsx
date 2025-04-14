@@ -63,23 +63,28 @@ const FullstackForm = () => {
   </h2>
 
   <form className="space-y-6">
-    <div className="flex flex-col">
-      <label>Your Name</label>
-      <input
-        type="text"
-        className="p-3 rounded-lg bg-black/30 border border-[#00ffbf]/30 focus:ring-2 focus:ring-[#00ffbf]"
-        placeholder="Enter your name"
-      />
-    </div>
+  <div className="flex flex-col">
+  <label>Your Name</label>
+  <input
+    type="text"
+    className="p-3 rounded-lg bg-black/30 border border-[#00ffbf]/30 focus:ring-2 focus:ring-[#00ffbf]"
+    placeholder="Enter your name"
+    value={userName} // Bind the input value to the state
+    onChange={(e) => setUserName(e.target.value)} // Update the state on input change
+  />
+</div>
 
-    <div className="flex flex-col">
-      <label>Email</label>
-      <input
-        type="email"
-        className="p-3 rounded-lg bg-black/30 border border-[#00ffbf]/30 focus:ring-2 focus:ring-[#00ffbf]"
-        placeholder="Enter your email"
-      />
-    </div>
+<div className="flex flex-col">
+  <label>Email</label>
+  <input
+    type="email"
+    className="p-3 rounded-lg bg-black/30 border border-[#00ffbf]/30 focus:ring-2 focus:ring-[#00ffbf]"
+    placeholder="Enter your email"
+    value={userEmail} // Bind the input value to the state
+    onChange={(e) => setUserEmail(e.target.value)} // Update the state on input change
+  />
+</div>
+
 
     <div className="flex flex-col">
       <label>Company / Brand Name</label>
