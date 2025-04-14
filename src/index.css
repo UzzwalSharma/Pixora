@@ -47,6 +47,35 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.shimmer-button {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.shimmer-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: skewX(-20deg);
+  animation: shimmer 2s infinite;
+  z-index: 1;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 125%;
+  }
+}
+
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -104,3 +133,11 @@ select:focus {
 }
 
 
+/* Neon Effect for hr */
+hr {
+  border: none;
+  height: 2px;
+  background-color: #00ffbf; /* Neon color */
+  box-shadow: 0 0 10px 2px #00ffbf, 0 0 15px 5px #00ffbf;
+  margin: 20px 0;
+}

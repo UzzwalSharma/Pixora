@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams , Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Header from "./_Components/Header";
@@ -177,6 +177,26 @@ function Viewcode() {
             {/* Main Content Section */}
             <main className="md:col-span-4 bg-white p-6 rounded-lg shadow-lg">
               <CodeEditor code={code} />
+
+               {/* Full Stack Solution CTA */}
+  <div className="flex justify-center mt-6">
+    <Link to="/websiteorder">
+    <button
+      // onClick={() => setShowFullStackForm(true)} // this will trigger modal/form
+      className="shimmer-button relative px-8 py-3 bg-gradient-to-r from-orange-500 to-yellow-400 text-white rounded-xl shadow-lg text-lg font-semibold transition-all hover:scale-105 hover:shadow-xl"
+    >
+   Want to convert it into full stack ?
+
+
+    </button></Link>
+
+   
+  </div>
+  <div>
+    <p className="text-center text-sm text-gray-600 mt-2 italic">
+  Get a production-ready site delivered in days – tailored just for you.
+</p>
+    </div>
             </main>
           </div>
     

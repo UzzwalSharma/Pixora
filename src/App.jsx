@@ -15,6 +15,7 @@ import Profile from "/src/Dashboard/_Components/Profile.jsx"
 import Pricing from "/src/Landing page/Pricing.jsx"
 import GetInTouch from "./GetInTouch";
 import GitHubOAuthCallback from "./GitHubOAuthCallback";
+import Mainform from "/src/Orderform/Main.jsx";
 function App() {
   return (
     <Router>
@@ -53,6 +54,7 @@ function App() {
          <Route path="contact" element={<GetInTouch />} />
          <Route path="pricing" element={<Pricing />} />
          <Route path="/github-oauth-callback" element={<GitHubOAuthCallback />} />
+         <Route path="/websiteorder" element={<Mainform />} />
 
       </Routes>
     </Router>
