@@ -90,13 +90,7 @@ const FullstackForm = () => {
     </button>
   </div>
 
-  {wantsTweaks && (
-    <textarea
-      rows={4}
-      className="mt-4 p-4 rounded-lg bg-black/30 border border-[#00ffbf]/30 focus:ring-2 focus:ring-[#00ffbf] resize-none transition duration-300 ease-in-out text-white placeholder-white/60"
-      placeholder="Describe the tweaks or improvements you want..."
-    />
-  )}
+ 
 </div>
 
 
@@ -111,28 +105,8 @@ const FullstackForm = () => {
           </div>
         )}
 
-    {/* <div className="flex flex-col">
-      <label>Project Description</label>
-      <textarea
-        rows={4}
-        className="p-3 rounded-lg bg-black/30 border border-[#00ffbf]/30 focus:ring-2 focus:ring-[#00ffbf] resize-none"
-        placeholder="Tell us what kind of website you need..."
-      />
-    </div> */}
 
    
-
-   
-
-   
-
-    {/* <div className="flex flex-col">
-      <label>Upload Logo / Files (Optional)</label>
-      <input
-        type="file"
-        className="p-3 rounded-lg bg-black/30 border border-[#00ffbf]/30 file:text-white file:bg-[#00ffbf]/20 file:border-none file:rounded-md file:px-4 file:py-2 hover:file:bg-[#00ffbf]/30 transition"
-      />
-    </div> */}
 
 <div className="flex flex-col">
             <label className="mb-2">Choose Plan</label>
@@ -140,14 +114,14 @@ const FullstackForm = () => {
               <button
                 type="button"
                 onClick={() => setSelectedPlan("Pro")}
-                className={`planBtn ${selectedPlan === "Pro" ? "planSelectedPro" : ""}`}
+                className={`shimmer-button planBtn ${selectedPlan === "Pro" ? "planSelectedPro" : ""}`}
               >
                 Pro (4–5 days)
               </button>
               <button
                 type="button"
                 onClick={() => setSelectedPlan("Premium")}
-                className={`planBtn ${selectedPlan === "Premium" ? "planSelectedPremium" : ""}`}
+                className={`shimmer-button planBtn ${selectedPlan === "Premium" ? "planSelectedPremium" : ""}`}
               >
                 Premium (24–48 hrs)
               </button>
@@ -176,34 +150,7 @@ const FullstackForm = () => {
           />
         </div>
       </div>
-      {/* {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="bg-black rounded-xl p-8 w-[90%] max-w-md text-white border border-[#00ffbf] shadow-xl relative">
-            <h2 className="text-xl font-bold mb-4 text-[#00ffbf] drop-shadow">
-              You’ve chosen the <span className="text-yellow-300">{selectedPlan}</span> Plan
-            </h2>
-            <p className="mb-4">Please enter your subscription code to continue:</p>
-
-            <input
-              type="text"
-              value={subscriptionCode}
-              onChange={(e) => setSubscriptionCode(e.target.value)}
-              placeholder="Enter code"
-              className="w-full p-3 rounded-lg bg-black/30 border border-[#00ffbf]/30 focus:ring-2 focus:ring-[#00ffbf] text-white placeholder-white/60 mb-3"
-            />
-            {codeError && <p className="text-red-500 text-sm mb-2">{codeError}</p>}
-
-            <div className="flex justify-end gap-4">
-              <button className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition" onClick={() => setShowModal(false)}>
-                Cancel
-              </button>
-              <button className="px-4 py-2 bg-[#00ffbf] text-black font-semibold rounded-lg hover:bg-[#00ffbf]/80 transition" onClick={handleSubmit}>
-                Verify & Submit
-              </button>
-            </div>
-          </div>
-        </div>
-      )} */}
+     
 
 <NeonSubscriptionModal
   showModal={showModal}

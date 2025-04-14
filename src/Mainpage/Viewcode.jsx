@@ -194,7 +194,7 @@ function Viewcode() {
   </div>
   <div>
     <p className="text-center text-sm text-gray-600 mt-2 italic">
-  Get a production-ready site delivered in days – tailored just for you.
+  Get a production-ready site delivered in hours – tailored just for you.
 </p>
     </div>
             </main>
