@@ -1,20 +1,24 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 
 const NeonSubscriptionModal = ({ showModal, selectedPlan, onClose, onVerify }) => {
   const [subscriptionCode, setSubscriptionCode] = useState("");
   const [codeError, setCodeError] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate(); 
   const handleSubmit = () => {
     setLoading(true);
     setCodeError("");
-
+  
     setTimeout(() => {
       if (subscriptionCode === "PIXORA123") {
         setCodeError("");
-        onVerify();
         onClose();
+        const userEmail = "uzzwal7505@gmail.com";  // Replace with dynamic email
+        const userName = "Setu";  // Replace with dynamic name
+        onVerify(userEmail, userName);  // Pass email and name to onVerify
+        navigate("/OrderSuccess");
       } else {
         setCodeError("❌ Invalid code. Please try again.");
       }

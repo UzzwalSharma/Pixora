@@ -1,10 +1,16 @@
 import { useState ,React } from "react";
 import NeonSubscriptionModal from "/src/Orderform/Modelpopup.jsx";
+import OrderSuccessModal from "./OrderSuccessModal";
+
 const FullstackForm = () => {
 
     const [wantsTweaks, setWantsTweaks] = useState(false);
     const [selectedPlan, setSelectedPlan] = useState("Pro");
     const [showModal, setShowModal] = useState(false); // Define showModal state
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const [userName, setUserName] = useState("");
+    const [userEmail, setUserEmail] = useState("");
+
     // const [selectedPlan, setSelectedPlan] = useState("Premium"); // Set the selected plan
   
     // This function will handle opening the modal
@@ -17,9 +23,33 @@ const FullstackForm = () => {
       setShowModal(false);
     };
   
-    const handleVerify = () => {
-      // Handle successful verification
+    const handleVerify = async () => {
       console.log("Subscription verified!");
+  
+      // Send the request to the backend to trigger the email
+      try {
+        const response = await fetch("/api/sendEmail", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: userEmail,
+            name: userName,
+            plan: selectedPlan,
+          }),
+        });
+  
+        const result = await response.json();
+        if (response.ok) {
+          console.log("✅ Email sent successfully!");
+          setShowSuccessModal(true); // Show success modal after successful email send
+        } else {
+          console.error("❌ Error:", result.error);
+        }
+      } catch (error) {
+        console.error("❌ Error sending confirmation email:", error);
+      }
     };
   
   
@@ -152,15 +182,17 @@ const FullstackForm = () => {
       </div>
      
 
-<NeonSubscriptionModal
+      <NeonSubscriptionModal
   showModal={showModal}
   selectedPlan={selectedPlan}
   onClose={() => setShowModal(false)}
-  onVerify={() => {
-    // do something on successful verification
-    console.log("Verified!");
-  }}
+  onVerify={handleVerify}
+  onSuccess={() => setShowSuccessModal(true)} // ✅ Trigger OrderSuccessModal
 />
+
+{showSuccessModal && (
+  <OrderSuccessModal onClose={() => setShowSuccessModal(false)} />
+)}
 
     </section>
   );
