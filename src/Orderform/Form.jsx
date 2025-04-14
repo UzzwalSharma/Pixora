@@ -25,33 +25,34 @@ const FullstackForm = () => {
   
     const handleVerify = async () => {
       console.log("Subscription verified!");
-  
-      // Send the request to the backend to trigger the email
+    
       try {
-        const response = await fetch("/sendEmail", {
+        // Submit the form data to Formspree
+        const response = await fetch("https://formspree.io/f/meoadoqq", {
           method: "POST",
           headers: {
+            Accept: "application/json",
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            email: userEmail,
             name: userName,
+            email: userEmail,
             plan: selectedPlan,
+            tweaks: wantsTweaks ? "Yes" : "No",
           }),
         });
-  
-        const result = await response.json();
+    
         if (response.ok) {
-          console.log("✅ Email sent successfully!");
-          setShowSuccessModal(true); // Show success modal after successful email send
+          console.log("✅ Submitted to Formspree!");
+          setShowSuccessModal(true);
         } else {
-          console.error("❌ Error:", result.error);
+          console.error("❌ Formspree submission failed");
         }
       } catch (error) {
-        console.error("❌ Error sending confirmation email:", error);
+        console.error("❌ Error during Formspree submission:", error);
       }
     };
-  
+    
   
   return (
     <section className="w-full min-h-screen flex items-center py-20 px-6 md:px-24 bg-black relative">
