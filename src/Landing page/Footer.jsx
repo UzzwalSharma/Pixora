@@ -78,7 +78,7 @@ const Footer = () => {
       <span className="font-extrabold text-green-400"> Team Syntax Squad</span>
     </p>
     <p className="text-bold text-white text-center">
-      If it works, it's magic. If it doesn't, blame Bhupendra Jogi!
+      If it works, it's magic. If it doesn't, blame Bhupendra Jogi!  ujjwal
     </p>
   </div>
 </footer>
