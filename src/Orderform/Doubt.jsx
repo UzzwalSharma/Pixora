@@ -24,9 +24,10 @@ const StillHaveDoubts = () => {
       </div>
 
       {/* Right Side: Image or Graphic */}
-      <div className="w-full md:w-1/2 flex justify-center">
-       <DoubtSpline/>
-      </div>
+      <div className="w-full md:w-1/2 flex justify-center h-full scale-105">
+  <DoubtSpline />
+</div>
+
     </section>
   );
 };
