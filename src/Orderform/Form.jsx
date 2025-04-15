@@ -27,7 +27,7 @@ const FullstackForm = () => {
       console.log("Sending request...");
     
       try {
-        const response = await fetch("https://pixora-s-backend.onrender.com/send-confirmation", {
+        const response = await fetch("/send-confirmation", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
