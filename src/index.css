@@ -133,11 +133,4 @@ select:focus {
 }
 
 
-/* Neon Effect for hr */
-hr {
-  border: none;
-  height: 2px;
-  background-color: #00ffbf; /* Neon color */
-  box-shadow: 0 0 10px 2px #00ffbf, 0 0 15px 5px #00ffbf;
-  margin: 20px 0;
-}
+

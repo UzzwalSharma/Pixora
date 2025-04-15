@@ -24,14 +24,12 @@ const FullstackForm = () => {
     };
   
     const handleVerify = async () => {
-      console.log("Subscription verified!");
+      console.log("Sending request...");
     
       try {
-        // Submit the form data to Formspree
-        const response = await fetch("https://formspree.io/f/meoadoqq", {
+        const response = await fetch("https://pixora-s-backend.onrender.com/send-confirmation", {
           method: "POST",
           headers: {
-            Accept: "application/json",
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
@@ -43,15 +41,16 @@ const FullstackForm = () => {
         });
     
         if (response.ok) {
-          console.log("✅ Submitted to Formspree!");
+          console.log("✅ Confirmation email sent!");
           setShowSuccessModal(true);
         } else {
-          console.error("❌ Formspree submission failed");
+          console.error("❌ Email not sent");
         }
       } catch (error) {
-        console.error("❌ Error during Formspree submission:", error);
+        console.error("❌ Error sending confirmation email:", error);
       }
     };
+    
     
   
   return (
