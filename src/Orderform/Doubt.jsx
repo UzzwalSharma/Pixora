@@ -16,7 +16,7 @@ const StillHaveDoubts = () => {
           Don’t hesitate to reach out — we love building cool things together!
         </p>
         <a
-          href="mailto:pixora.connect@gmail.com" // replace with your support email
+          href="mailto:uzzwal7505@gmail.com" // replace with your support email
           className="inline-block bg-white text-black font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-gray-200 transition"
         >
           Send us an email

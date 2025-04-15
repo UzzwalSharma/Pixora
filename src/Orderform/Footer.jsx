@@ -116,7 +116,10 @@ function Footer() {
       <div className="mt-10 border-t border-gray-800 pt-4 text-center text-sm text-gray-500">
         © {new Date().getFullYear()} <span className="text-white font-semibold">Pixora</span>. All rights reserved.
         <br />
-       <br /> Made with heart and thoda sa Chatgpt
+       <br /><p class="text-center text-sm text-gray-500">
+  Made with <span class="text-red-500">❤️</span> by <strong>Team Syntax Squad</strong>
+</p>
+
       </div>
     </footer>
   );
