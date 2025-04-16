@@ -22,7 +22,7 @@ export default function PixoraTrackingPage() {
 
           <h1 className="text-3xl font-bold text-gray-800 mb-2">Order Received 🎉</h1>
           <p className="text-gray-600 mb-6">
-            Hey <strong>Ujjwal</strong>, thanks for choosing the <strong>Pixora</strong> Pro.
+         <strong> Thanks </strong>  for choosing the <strong>Pixora</strong> Pro.
           </p>
 
           <img
