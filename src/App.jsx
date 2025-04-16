@@ -18,6 +18,8 @@ import GitHubOAuthCallback from "./GitHubOAuthCallback";
 import Mainform from "/src/Orderform/Main.jsx";
 import OrderSuccessModal from "./Orderform/OrderSuccessModal";
 import Track from "/src/Orderform/Track.jsx"
+import Hangtight from "/src/Orderform/Hangtight.jsx"
+import Policy from "/src/Privacy.jsx"
 function App() {
   return (
     <Router>
@@ -59,6 +61,8 @@ function App() {
          <Route path="/websiteorder" element={<Mainform />} />
          <Route path="/OrderSuccess" element={<OrderSuccessModal/>} />
          <Route path="/trackorder" element={<Track/>} />
+         <Route path="/hangtight" element={<Hangtight/>} />
+         <Route path="/privacypolicy" element={<Policy/>} />
 
       </Routes>
     </Router>
