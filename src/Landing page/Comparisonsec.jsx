@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import CircleGraph from "/src/Landing page/CircleGraph.jsx";
+import Counter from "./Counter";
 const stats = [
   {
     number: "+300",
@@ -47,7 +48,10 @@ const ComparisonSection = () => {
                   boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.1)",
                 }}
               >
-                <div className="text-4xl font-bold text-green-500">{stat.number}</div>
+           <div className="text-4xl font-bold text-green-500">
+  <Counter target={stat.number} />
+</div>
+
                 <h3 className="text-lg font-semibold mt-2">{stat.title}</h3>
                 <p className="text-gray-600 mt-1">{stat.description}</p>
               </motion.div>
