@@ -20,8 +20,11 @@ import OrderSuccessModal from "./Orderform/OrderSuccessModal";
 import Track from "/src/Orderform/Track.jsx"
 import Hangtight from "/src/Orderform/Hangtight.jsx"
 import Policy from "/src/Privacy.jsx"
+import Alert from "/src/Alert.jsx"
 function App() {
   return (
+   <>
+    <Alert/>
     <Router>
        <Toaster position="top-right" richColors />
        <AuthNotifier />
@@ -66,6 +69,7 @@ function App() {
 
       </Routes>
     </Router>
+    </>
   );
 }
 
