@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 const points = [
   { label: "AI-Powered Conversion", radius: 100, speed: 5 },
   { label: "Sketch to Code", radius: 150, speed: 7 },
-  { label: "Figma to React", radius: 200, speed: 9 },
-  { label: "Auto UI Optimization", radius: 250, speed: 11 },
+  { label: "Full vibey Ecosystem", radius: 200, speed: 9 },
+  { label: "Instant Deployment", radius: 250, speed: 11 },
 ];
 
 const getRandomPosition = () => ({

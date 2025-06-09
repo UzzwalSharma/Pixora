@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import Sparkles from "react-sparkle";
 import { Link } from "react-router-dom";
 
-const changingWords = ["Wireframes", "Images", "Sketches", "Designs"];
+const changingWords = ["Wireframes","Ideas", "Concepts", "Dreams", "Visions"]
+
 
 const Hero = () => {
   const [index, setIndex] = useState(0);
