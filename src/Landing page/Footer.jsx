@@ -11,7 +11,7 @@ const Footer = () => {
         {/* Logo & Tagline */}
         <div className="flex flex-col items-center md:items-start gap-2">
           <div className="flex items-center space-x-3">
-            <img src="Logo2.jpg" alt="Pixora Logo" className="h-16 w-16 rounded-2xl shadow-lg border-2 border-green-400" />
+            <img src="pixoranewlogo.jpg" alt="Pixora Logo" className="h-16 w-16 rounded-2xl shadow-lg border-2 border-green-400" />
             <span className="text-4xl font-extrabold bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent tracking-tight">
               Pixora
             </span>

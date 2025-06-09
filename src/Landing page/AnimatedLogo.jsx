@@ -15,7 +15,7 @@ const AnimatedLogo = () => {
         transition={{ duration: 0.4, repeat: Infinity, repeatType: "reverse" }}
       >
         <motion.img
-          src="/Logo2.jpg"
+          src="/pixoranewlogo.jpg"
           alt="Pixora Logo"
           className="h-18 w-auto rounded-full"
           whileHover={{ scale: 1.1 }}
