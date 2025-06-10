@@ -16,7 +16,7 @@ function Contactus() {
       }, []);
 
   return (
-    <div className="bg-black text-white" id="contact-us">
+    <div className="bg-black text-white flex flex-col items-center justify-center" id="contact-us">
       
 
 <div className="div pt-16">
