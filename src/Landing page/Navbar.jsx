@@ -50,7 +50,7 @@ const Navbar = () => {
       ) : (
         <Link to="/signin">
           <motion.button
-            className="relative overflow-hidden bg-transparent text-black font-semibold px-5 py-2 rounded-full border border-green-400"
+            className="relative overflow-hidden bg-transparent text-black font-semibold px-5 py-2 rounded-md border border-green-400"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

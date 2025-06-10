@@ -64,35 +64,18 @@ const Hero = () => {
 
         <Link to="/dashboard">
         {/* NEON CTA BUTTON */}
-        <motion.button
-  className="mt-8 px-10 py-5 text-xl font-bold uppercase tracking-wider text-white 
-  bg-green-500 rounded-full border-2 border-green-400 relative 
-  transition-all duration-300 ease-in-out overflow-hidden
-  shadow-[0_0_20px_#00ff00] before:absolute before:top-0 before:left-0 
+         <motion.button
+                 className={`shimmer-button w-80px mt-8 py-3 px-8 rounded-lg font-medium transition-all duration-300 cursor-pointer relative overflow-hidden 
+  bg-gradient-to-r from-green-900 via-green-700 to-green-500 shadow-[0_0_20px_#00ff00] 
+  before:absolute before:top-0 before:left-0 
   before:w-full before:h-full before:bg-green-400 before:opacity-40 
-  before:blur-xl before:rounded-full before:-z-10"
-  whileHover={{
-    scale: 1.1,
-    boxShadow: "0px 0px 40px #00ff00, 0px 0px 80px #00ff00 inset",
-    textShadow: "0px 0px 10px #00ff00",
-    transition: { duration: 0.3, ease: "easeInOut" },
-  }}
-  animate={{
-    boxShadow: [
-      "0px 0px 20px #00ff00",
-      "0px 0px 35px #00ff00",
-      "0px 0px 20px #00ff00",
-    ],
-    filter: ["brightness(1)", "brightness(1.2)", "brightness(1)"],
-    transition: {
-      duration: 1.5,
-      repeat: Infinity,
-      repeatType: "reverse",
-    },
-  }}
->
+  before:blur-xl before:rounded-full before:-z-10`}
+                
+                 whileHover={{ scale: 1.08 }}
+                 whileTap={{ scale: 0.98 }}
+               >
   <span className="relative z-10 font-black tracking-wide drop-shadow-[0_0_5px_#00ff00] text-xl">
-    Try Pixora for Free
+    TRY PIXORA FOR FREE
   </span>
 
   {/* Neon Glow Ring Effect */}

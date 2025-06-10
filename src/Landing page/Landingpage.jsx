@@ -12,9 +12,11 @@ import Steps from "./Steps";
 import Integrationsec from "./Integrationsec";
 import CTA from "./CTA";
 import Questions from "./Questions";
+
 function Landingpage() {
   return (
     <div>
+      
       <Hero />
       <Text />
    
