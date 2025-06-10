@@ -14,13 +14,13 @@ const steps = [
     title: 'AI Transforms It Instantly',
     description: "Pixora's advanced AI converts your input into clean, editable code — fast and beautifully.",
     side: 'right',
-    image: '/Gemini_Generated_Image_kvln7ukvln7ukvln.png',
+    image: '/Logos/Gemini_Generated_Image_8xolph8xolph8xol.png',
   },
   {
     title: 'Live Preview & Customize',
     description: 'See your project come alive in real time. Tweak it visually or in code instantly.',
     side: 'left',
-    image: '/Gemini_Generated_Image_6e6mqs6e6mqs6e6m.jpeg',
+    image: '/karl-pawlowicz-QUHuwyNgSA0-unsplash.jpg',
   },
   {
     title: 'Collaborate & Share',
