@@ -2,9 +2,9 @@ import React from "react";
 import Hero from "./Hero";
 import ComparisonSection from "./Comparisonsec.jsx";
 import Pricing from "./Charges";
-import HeroSection from "./Herosec2";
+// import HeroSection from "./Herosec2";
 import Showcase from "./Showcase";
-
+import Contactus from "./Contactus";
 import Footer from "./Footer";
 import Text from "./Text/Text.jsx";
 // import Newhero from "./Newhero.jsx"
@@ -17,6 +17,7 @@ function Landingpage() {
     <div>
       <Hero />
       <Text />
+   
       <ComparisonSection />
       <Integrationsec />
       <hr className="text-gray-900" />
@@ -34,8 +35,11 @@ function Landingpage() {
       <Steps />
 
       <Pricing />
-      <HeroSection />
+      
+   <Contactus />
+
       <Questions />
+
       <CTA />
       {/* <Newhero/> */}
       {/* <Timeline/> */}
