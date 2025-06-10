@@ -64,18 +64,23 @@ const Footer = () => {
       <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-[80%] h-[2px] bg-gradient-to-r from-green-400 via-[#00ff99] to-cyan-400 opacity-60 blur-sm"></div>
 
       {/* Copyright & Fun Shout-out */}
-      <div className="mt-10 flex flex-col items-center space-y-2">
-        <p className="text-green-300 text-xs">
-          © {new Date().getFullYear()} Pixora. All rights reserved.
-        </p>
-        <p className="text-sm md:text-base text-center font-bold text-white">
-          Built with <span className="text-[#00ff99]">❤️</span>, determination, and a lot of CTRL + Z by
-          <span className="font-extrabold text-[#00ff99]"> Ujjwal Sharma</span>
-        </p>
-        <p className="text-xs text-green-400 text-center">
-          If it works, it's magic. If it doesn't, blame Bhupendra Jogi!
-        </p>
-      </div>
+    
+<div className="mt-10 flex flex-col items-center space-y-2">
+  <p className="text-sm md:text-base font-semibold text-yellow-400">
+   🇮🇳 Built for India with vision & innovation
+  </p>
+  <p className="text-green-300 text-xs">
+    © {new Date().getFullYear()} Pixora. All rights reserved.
+  </p>
+  <p className="text-sm md:text-base text-center font-bold text-white">
+    Built with <span className="text-[#00ff99]">❤️</span>, determination, and a lot of CTRL + Z by
+    <span className="font-extrabold text-[#00ff99]"> Ujjwal Sharma</span>
+  </p>
+  <p className="text-xs text-green-400 text-center">
+    If it works, it's magic. If it doesn't, blame Bhupendra Jogi!
+  </p>
+</div>
+
     </footer>
   );
 };
