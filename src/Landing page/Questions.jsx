@@ -39,15 +39,14 @@ function Questions() {
   };
 
   return (
-    <div>
-      <div className="container bg-black text-white">
+    <div className="w-full bg-black text-white overflow-x-hidden">
+      <div className="bg-black">
         <div className="text-2xl font-bold flex items-center justify-center gap-2">
           <div className="inline-block border-2 mt-12 border-lime-400 rounded-full px-3 py-1 bg-green-100 text-lime-600 items-center uppercase ">
             <span className="text-sm relative bottom-1 right-1">★</span>
             <span>FAQs</span>
           </div>
         </div>
-
         <h2 className='text-6xl font-medium mt-6 mb-4 text-center'>
           Question's? We have got <span className="text-[#00ff99]">Answers</span>
         </h2>

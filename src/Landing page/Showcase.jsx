@@ -15,10 +15,7 @@ function Showcase() {
 
   return (
     <div>
-      <div
-        ref={containerRef}
-        className="container bg-black text-white bg-gradient-to-b from-black to-green-900 py-[72px] px-4 md:px-8 lg:px-16 xl:px-24"
-      >
+      <div className="w-full bg-black text-white bg-gradient-to-b from-black to-green-900 py-[72px] px-4 md:px-8 lg:px-16 xl:px-24 overflow-x-hidden" ref={containerRef}>
         <h2 className='text-center text-5xl font-bold tracking-tighter'>See Pixora in Action</h2>
         <div className='max-w-2xl mx-auto mt-8'>
           <p className='text-center text-white/70 text-xl mt-5'>
@@ -28,7 +25,7 @@ function Showcase() {
         <motion.div
           style={{
             opacity,
-            rotateX:rotateX ,
+            rotateX: rotateX,
             transformPerspective: "800px",
           }}
           className="mx-auto shadow-2xl"
