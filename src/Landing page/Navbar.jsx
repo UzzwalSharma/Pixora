@@ -62,7 +62,7 @@ const Navbar = () => {
               whileHover={{ scaleX: 1, backgroundColor: "rgb(16, 185, 129)" }} // Darker Green
               exit={{ scaleX: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              style={{ originX: 0 }}
+              style={{ originX: 0 , cursor: "pointer" }}
             />
             
             {/* Button text */}
