@@ -130,10 +130,15 @@ function Contactus() {
     <div className="absolute z-40 w-[320px] h-[320px] rounded-full bg-green-500 blur-3xl top-[75%] -translate-y-1/2 opacity-65"></div>
 
     {/* Phone Mockup */}
-    <img
+    <motion.img 
+      drag
+  dragConstraints={{ left: 0, right: 300, top: 0, bottom: 200 }}
+
+   whileHover={{ scale: 1.05 , cursor:"grab"}}
+   
       src="/Gemini_Generated_Image_m2hmlem2hmlem2hm-Photoroom.png"
       alt="Phone UI"
-      className="absolute z-50 w-[260px] md:w-[400px] top-[70%] -translate-y-1/2 right-25"
+      className="  absolute z-50 w-[260px] md:w-[400px] top-[70%] -translate-y-1/2 right-25"
     />
   </div>
 </div>
