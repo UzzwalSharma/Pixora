@@ -119,16 +119,15 @@ export default function CustomSignInSignUp({ isSignUp = false }) {
     setErrors([]);
     setLoading(true);
     try {
+      const params = {
+        strategy: provider,
+        redirectUrl: "/",
+        redirectUrlComplete: window.location.origin + "/"
+      };
       if (mode === "signin") {
-        await signInObj.signIn.authenticateWithRedirect({
-          strategy: provider,
-          redirectUrl: "/",
-        });
+        await signInObj.signIn.authenticateWithRedirect(params);
       } else {
-        await signUpObj.signUp.authenticateWithRedirect({
-          strategy: provider,
-          redirectUrl: "/",
-        });
+        await signUpObj.signUp.authenticateWithRedirect(params);
       }
     } catch (err) {
       setErrors([{ longMessage: "Social authentication failed." }]);
@@ -353,17 +352,17 @@ export default function CustomSignInSignUp({ isSignUp = false }) {
               </button>
               <button
                 type="button"
-                onClick={() => handleSocialAuth("oauth_linkedin")}
-                className="flex items-center gap-2 px-5 py-2 rounded-xl bg-[#0077b5] text-white font-semibold shadow hover:bg-[#005983] transition border border-[#0077b5] min-w-[140px]"
+                onClick={() => handleSocialAuth("oauth_github")}
+                className="flex items-center gap-2 px-5 py-2 rounded-xl bg-[#24292f] text-white font-semibold shadow hover:bg-[#1b1f23] transition border border-[#24292f] min-w-[140px]"
                 style={{ cursor: "pointer" }}
               >
                 <img
-                  src="/Logos/icons8-linkedin-48.png"
-                  alt="LinkedIn"
+                  src="/Logos/github-logo.svg"
+                  alt="GitHub"
                   className="w-5 h-5"
                   style={{ display: "inline-block" }}
                 />
-                <span className="ml-1">LinkedIn</span>
+                <span className="ml-1">GitHub</span>
               </button>
             </div>
           </div>

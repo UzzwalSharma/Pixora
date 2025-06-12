@@ -14,7 +14,7 @@ const statsData = [
     color: "#D1FAE5", // green-100
   },
   {
-    number: "100K",
+    number: "100s",
     title: "Framework Support",
     description: "Export designs to React, Tailwind, and HTML/CSS effortlessly.",
     color: "#FFE0B2", // blue-100

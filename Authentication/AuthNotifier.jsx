@@ -14,15 +14,15 @@ const AuthNotifier = () => {
     }
 
     if (isSignedIn && !prevSignedInState.current) {
-      // 🎉 User just signed in
+      // User just signed in
       toast.success("Welcome back to Pixora! 🚀", {
-        description: "Enjoy seamless UI-to-code transformation.",
+       description: "Your AI-powered web development journey continues!",
         duration: 3000,
         position: "top-right",
         className: "text-white bg-green-500 shadow-lg",
       });
     } else if (!isSignedIn && prevSignedInState.current) {
-      // 👋 User just signed out
+      // User just signed out
       toast.info("You have signed out!", {
         description: "Come back soon for more AI magic!",
         duration: 3000,
