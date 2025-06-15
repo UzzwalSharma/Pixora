@@ -7,7 +7,7 @@ import Loader from "/Loader/Loader.jsx";
 import { generateResponse } from "/Ai models/Open_route.jsx";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-import { useUser } from "@clerk/clerk-react"; // Import Clerk's user hook
+import { useUser } from "@clerk/clerk-react"; // Clerk's user hook
 
 
 

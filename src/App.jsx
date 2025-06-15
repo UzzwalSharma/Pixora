@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Landingpage from "./Landing page/Landingpage";
-import Dashboard from "/src/Dashboard/Layout.jsx";
+import Dashboard from "/src/Dashboard/Layout/Main_Layout.jsx";
+// Pixora-s-Frontend/src/Dashboard/Layout/Main_Layout.jsx
 import Workspace from "./Dashboard/_Components/Workspace";
 import Designs from "./Dashboard/_Components/Designs";
 import Viewcode from "./Mainpage/Viewcode";
@@ -15,7 +16,7 @@ import Profile from "/src/Dashboard/_Components/Profile.jsx"
 import Pricing from "/src/Landing page/Pricing.jsx"
 import GetInTouch from "./GetInTouch";
 import GitHubOAuthCallback from "./GitHubOAuthCallback";
-
+import Chat from "./Dashboard/_Components/Chat";
 
 import Policy from "/src/Privacy.jsx"
 
@@ -39,8 +40,8 @@ function App() {
           }
         >
           {/*  index route to show home by default */}
-          <Route index element={<Workspace />} />
-          <Route path="dashboard" element={<Workspace />} />
+          <Route index element={<Chat />} />
+          <Route path="dashboard" element={<Chat />} />
           <Route path="designs" element={<Designs />} />
           <Route path="subscription" element={<PixoraPlus />} />
           <Route path="about" element={<About />} />

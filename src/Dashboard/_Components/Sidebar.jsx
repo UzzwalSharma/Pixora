@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FaHome, FaTh, FaSearch, FaUserAlt, FaCrown, FaInfoCircle, FaLayerGroup, FaPalette } from "react-icons/fa";
+import { FaHome, FaUserAlt, FaCrown, FaInfoCircle, FaLayerGroup, FaPalette } from "react-icons/fa";
 
 
 function Sidebar() {
@@ -22,7 +22,7 @@ function Sidebar() {
       {/* Logo and Heading */}
       <div className="flex flex-col items-center space-y-3 mb-6">
         <img
-          src="/Logo2.jpg"
+          src="/pixoranewlogo.jpg"
           alt="Pixora"
           className="h-20 w-20 object-contain border-4 border-green-400 rounded-full shadow-lg"
         />

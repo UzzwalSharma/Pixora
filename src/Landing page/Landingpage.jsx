@@ -12,14 +12,14 @@ import Steps from "./Steps";
 import Integrationsec from "./Integrationsec";
 import CTA from "./CTA";
 import Questions from "./Questions";
-
+import MessageTest from "./MessageTest";
 function Landingpage() {
   return (
     <div>
       
       <Hero />
       <Text />
-   
+   <MessageTest />
       <ComparisonSection />
       <Integrationsec />
       <hr className="text-gray-900" />
