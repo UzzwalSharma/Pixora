@@ -1,6 +1,8 @@
 import { useEffect, useRef, useCallback, useTransition, useState } from "react";
 import axios from "axios";
-import { generateResponse } from "/Ai models/Open_route.jsx";
+import { useMutation } from "convex/react";
+import { api } from "/convex/_generated/api";
+import { useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import {
     ImageIcon,
@@ -23,7 +25,7 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import * as React from "react";
-import {useUser} from "@clerk/clerk-react"; 
+import { toast } from "sonner";
 
 function cn(...args) {
   return args.filter(Boolean).join(' ');
@@ -53,7 +55,6 @@ const AI_MODELS = [
     category: "Free"
   }
 ];
-
 
 // --- Model Selector Component ---
 const ModelSelector = ({ selectedModel, onModelChange, isDisabled }) => {
@@ -99,77 +100,75 @@ const ModelSelector = ({ selectedModel, onModelChange, isDisabled }) => {
                 />
             </motion.button>
 
-       <AnimatePresence>
-  {isOpen && (
-    <motion.div
-      className="absolute bottom-full left-0 mb-2 w-80 rounded-xl border border-white/10 shadow-2xl z-50 backdrop-blur-xl bg-white/10"
-      initial={{ opacity: 0, y: 10, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 10, scale: 0.95 }}
-      transition={{ duration: 0.2 }}
-    >
-      <div className="p-4">
-        <div className="text-sm font-semibold text-white mb-3 px-1 tracking-wide">
-          Choose Your AI Model
-        </div>
-        <div className="space-y-2">
-          {AI_MODELS.map((model) => (
-            <motion.button
-              key={model.id}
-              onClick={() => {
-                onModelChange(model.id);
-                setIsOpen(false);
-              }}
-              className={cn(
-                "w-full flex items-start gap-3 p-3 rounded-lg text-left transition-all duration-200",
-                "hover:bg-white/15",
-                selectedModel === model.id
-                  ? "bg-white/20 border border-white/20"
-                  : "border border-transparent"
-              )}
-              whileHover={{ scale: 1.015 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <div className="flex-shrink-0 mt-0.5 text-white">
-                {model.icon}
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-base font-semibold text-white truncate">
-                    {model.name}
-                  </span>
-                  <span
-                    className={cn(
-                      "text-xs px-2 py-0.5 rounded-full font-medium",
-                      model.category === "Free"
-                        ? "bg-green-500/20 text-green-300"
-                        : "bg-yellow-500/20 text-yellow-300"
-                    )}
-                  >
-                    {model.category}
-                  </span>
-                </div>
-                <p className="text-sm text-white/80 mt-0.5 leading-snug">
-                  {model.description}
-                </p>
-              </div>
-              {selectedModel === model.id && (
-                <motion.div
-                  className="flex-shrink-0 w-2.5 h-2.5 bg-green-400 rounded-full mt-2"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                />
-              )}
-            </motion.button>
-          ))}
-        </div>
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence>
-
-
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        className="absolute bottom-full left-0 mb-2 w-80 rounded-xl border border-white/10 shadow-2xl z-50 backdrop-blur-xl bg-white/10"
+                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                    >
+                        <div className="p-4">
+                            <div className="text-sm font-semibold text-white mb-3 px-1 tracking-wide">
+                                Choose Your AI Model
+                            </div>
+                            <div className="space-y-2">
+                                {AI_MODELS.map((model) => (
+                                    <motion.button
+                                        key={model.id}
+                                        onClick={() => {
+                                            onModelChange(model.id);
+                                            setIsOpen(false);
+                                        }}
+                                        className={cn(
+                                            "w-full flex items-start gap-3 p-3 rounded-lg text-left transition-all duration-200",
+                                            "hover:bg-white/15",
+                                            selectedModel === model.id
+                                                ? "bg-white/20 border border-white/20"
+                                                : "border border-transparent"
+                                        )}
+                                        whileHover={{ scale: 1.015 }}
+                                        whileTap={{ scale: 0.98 }}
+                                    >
+                                        <div className="flex-shrink-0 mt-0.5 text-white">
+                                            {model.icon}
+                                        </div>
+                                        <div className="flex-1 min-w-0">
+                                            <div className="flex items-center justify-between gap-2">
+                                                <span className="text-base font-semibold text-white truncate">
+                                                    {model.name}
+                                                </span>
+                                                <span
+                                                    className={cn(
+                                                        "text-xs px-2 py-0.5 rounded-full font-medium",
+                                                        model.category === "Free"
+                                                            ? "bg-green-500/20 text-green-300"
+                                                            : "bg-yellow-500/20 text-yellow-300"
+                                                    )}
+                                                >
+                                                    {model.category}
+                                                </span>
+                                            </div>
+                                            <p className="text-sm text-white/80 mt-0.5 leading-snug">
+                                                {model.description}
+                                            </p>
+                                        </div>
+                                        {selectedModel === model.id && (
+                                            <motion.div
+                                                className="flex-shrink-0 w-2.5 h-2.5 bg-green-400 rounded-full mt-2"
+                                                initial={{ scale: 0 }}
+                                                animate={{ scale: 1 }}
+                                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                            />
+                                        )}
+                                    </motion.button>
+                                ))}
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };
@@ -275,7 +274,7 @@ export function AnimatedAIChat() {
     const [isUploading, setIsUploading] = useState(false);
     const [isTyping, setIsTyping] = useState(false);
     const [isPending, startTransition] = useTransition();
-    const [selectedModel, setSelectedModel] = useState(AI_MODELS[0].id); // Default to first model
+    const [selectedModel, setSelectedModel] = useState(AI_MODELS[1].id);    //   will change it later on
     const fileInputRef = useRef(null);
     const { textareaRef, adjustHeight } = useAutoResizeTextarea({
         minHeight: 60,
@@ -283,6 +282,11 @@ export function AnimatedAIChat() {
     });
     const [inputFocused, setInputFocused] = useState(false);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+    // Convex mutation and user hooks
+    const { user, isLoaded } = useUser();
+    const navigate = useNavigate();
+    const sendMessage = useMutation(api.workspace.sendMessage);
 
     useEffect(() => {
         const handleMouseMove = (e) => {
@@ -327,13 +331,13 @@ export function AnimatedAIChat() {
         // Create FormData for Cloudinary upload
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("upload_preset", "kb9n4w2j"); // Replace with your upload preset
+        formData.append("upload_preset", "kb9n4w2j");
         formData.append("folder", "pixora_uploads"); 
 
         try {
             // Upload to Cloudinary
             const response = await fetch(
-                "https://api.cloudinary.com/v1_1/dvmqxb8kd/image/upload", // Replace with your cloud name
+                "https://api.cloudinary.com/v1_1/dvmqxb8kd/image/upload",
                 {
                     method: "POST",
                     body: formData,
@@ -351,7 +355,7 @@ export function AnimatedAIChat() {
                 url: data.secure_url,
                 name: file.name,
                 size: file.size,
-                cloudinaryId: data.public_id // Store for potential deletion later
+                cloudinaryId: data.public_id
             });
             
             console.log("✅ Image Uploaded to Cloudinary:", data.secure_url);
@@ -369,78 +373,97 @@ export function AnimatedAIChat() {
         }
     };
 
-    // Remove image function (updated for Cloudinary)
+    // Remove image function
     const handleRemoveImage = () => {
-        // Note: In production, you might want to delete from Cloudinary too
-        // using the cloudinaryId stored in uploadedImage.cloudinaryId
         setUploadedImage(null);
-    };
-
-    // Delete from Cloudinary function
-    const deleteFromCloudinary = async (publicId) => {
-        try {
-            // This requires server-side implementation for security
-            // as it needs your API secret
-            const response = await fetch('/api/delete-image', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ publicId }),
-            });
-            
-            if (response.ok) {
-                console.log('Image deleted from Cloudinary');
-            }
-        } catch (error) {
-            console.error('Failed to delete from Cloudinary:', error);
-        }
     };
 
     const handleAttachFile = () => {
         fileInputRef.current?.click();
     };
 
-    const handleSendMessage = async () => {
-        if (value.trim() || uploadedImage) {
-            startTransition(() => {
-                setIsTyping(true);
-                
-                setTimeout(async () => {
-                    try {
-                        // Use selected model instead of hardcoded one
-                        const description = value.trim();
-                        const image = uploadedImage?.url || null;
-                        const userName = user?.firstName || user?.username || user?.emailAddress || "User";
-                        
-                        const aiResponse = await generateResponse(userName, description, image, selectedModel);
-                        console.log("🚀 Full AI Response:", aiResponse);
+    // Updated handleSendMessage with Model Information
+ 
+// Updated handleSendMessage function
+const handleSendMessage = async () => {
+    // Check if user is signed in
+    if (!user) {
+        toast.error("You must be signed in to send a message.");
+        return;
+    }
 
-                        if (!aiResponse || !aiResponse._id) {
-                            console.error("❌ No ID received for the generated code.", aiResponse);
-                            return;
-                        }
+    // Check if model is selected
+    if (!selectedModel) {
+        toast.error("Please select an AI model before sending your message.");
+        return;
+    }
 
-                        // Clear the input and image after successful conversion
-                        setValue("");
-                        handleRemoveImage();
-                        adjustHeight(true);
-                        
-                        // Navigate to the generated code page
-                        navigate(`/generated-code/${aiResponse._id}`);
-                        
-                    } catch (error) {
-                        console.error("❌ Error getting AI response:", error);
-                    } finally {
-                        setIsTyping(false);
+    if (value.trim() || uploadedImage) {
+        startTransition(() => {
+            setIsTyping(true);
+
+            setTimeout(async () => {
+                try {
+                    // Prepare the message array in the desired format
+                    const message = [
+                        {
+                            content: value.trim(),
+                            role: "user",
+                        },
+                    ];
+
+                    // If an image is uploaded, add it to the message array
+                    if (uploadedImage) {
+                        message.push({
+                            content: uploadedImage.url,
+                            role: "user",
+                            type: "image", // Optional: specify type for image
+                        });
                     }
-                }, 3000);
-            });
-        }
-    };
 
-    const { user } = useUser();
-    const navigate = useNavigate();
+                    console.log("📤 Sending messages:", {
+                        message,
+                        aiModelId: selectedModel,
+                        userName: user.firstName || user.username || user.emailAddress || "Anonymous",
+                    });
+
+                    // Send messages using Convex mutation
+                    const workspaceId = await sendMessage({
+                        message, // Pass the array of messages
+                        aiModelId: selectedModel, // Pass the model ID
+                        userName: user.firstName || user.username || user.emailAddress || "Anonymous",
+                    });
+
+                    console.log("🚀 Workspace created with ID:", workspaceId);
+
+                    // Clear the input and image after successful send
+                    setValue("");
+                    setUploadedImage(null);
+                    adjustHeight(true);
+
+                    // Navigate to the workspace page using the returned ID
+                    navigate(`/workspace/${workspaceId}`);
+                } catch (error) {
+                    console.error("❌ Error sending messages:", error);
+                    toast.error("Failed to send messages: " + error.message);
+                } finally {
+                    setIsTyping(false);
+                }
+            }, 1000);
+        });
+    }
+};
+    // Loading state for user authentication
+    if (!isLoaded) {
+        return (
+            <div className="min-h-screen w-full flex items-center justify-center bg-transparent text-white">
+                <div className="flex items-center gap-3">
+                    <LoaderIcon className="w-6 h-6 animate-spin" />
+                    <span>Loading...</span>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="min-h-screen w-full flex items-center justify-center bg-transparent text-white p-6 relative overflow-hidden">

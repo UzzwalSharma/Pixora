@@ -16,18 +16,13 @@ import Questions from "./Questions";
 function Landingpage() {
   return (
     <div>
-      
       <Hero />
       <Text />
-   
+  
       <ComparisonSection />
       <Integrationsec />
       <hr className="text-gray-900" />
 
-      {/* <AnimatedTitle
-  title="How <b>Pixora</b> Works <br /> Convert sketches into <b>code</b> instantly"
-  containerClass="mt-5 text-black text-center text-3xl font-bold"
-/> */}
       {/* <Newhero/> */}
 
       <Showcase />
@@ -37,8 +32,8 @@ function Landingpage() {
       <Steps />
 
       <Pricing />
-      
-   <Contactus />
+
+      <Contactus />
 
       <Questions />
 
