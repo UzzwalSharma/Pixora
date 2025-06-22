@@ -41,7 +41,7 @@ const AI_MODELS = [
     category: "Free"
   },
   {
-    id: "microsoft/mai-ds-r1:free",
+    id: "deepseek/deepseek-chat:free",   //test it later on microsoft/mai-ds-r1:free
     name: "Pixora Tejas",
     description: "Our fastest and sharpest model. Built for performance, speed, and precision — the true powerhouse of Pixora.",
     icon: <ZapIcon className="w-4 h-4 text-yellow-400" />,

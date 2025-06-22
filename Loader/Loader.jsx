@@ -6,7 +6,7 @@ const Loader = ({ loading, message }) => {
   return (
     <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-40 z-50">
       <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-200 max-w-sm w-full text-center animate-fadeIn">
-        <img src="/Loader.gif" alt="Loading..." className="w-20 h-20 mx-auto" />
+        <img src="/downloading_16313604.gif" alt="Loading..." className="w-28 h-28 mx-auto" />
         <p className="mt-4 text-gray-900 text-lg font-semibold">
           {message || "Processing..."}
         </p>

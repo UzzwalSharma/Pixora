@@ -21,7 +21,7 @@ export default defineSchema({
     message: v.any(), // Changed from v.any() to v.string() for better type safety
     aiModelId: v.string(), // Added: The selected AI model ID
     imageUrl: v.optional(v.string()), // Added: Optional image URL
-  
+   code: v.optional(v.any()),  // for storing generated code
   }),
 
 })

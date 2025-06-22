@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { useMessages } from "./MessagesContext"; 
+import { useParams } from "react-router-dom";
+import { api } from "/convex/_generated/api.js";
 import { generateCodeResponse } from "/Ai models/Chat_Open_router";
 import {
   SandpackProvider,
@@ -36,7 +38,9 @@ import GitHubUserModal from "./Githubusermodel";
 import { toast } from 'sonner';
 import Sandpackpreview from "./Sandpackpreview";
 import DeploySuccessPopup from "./Deployment";
+import { useMutation } from "convex/react";
 
+const {id} = useParams();
 
 // Constants
 const THEME_COLORS = {
@@ -392,7 +396,7 @@ const [lastGenerationDuration, setLastGenerationDuration] = useState(null);
   const { messages, addMessage, isTyping, setIsTyping } = useMessages();
   const progressIntervalRef = useRef(null);
   const [user, setUser] = useState(null);
-  
+  const updateGeneratedCode = useMutation(api.workspace.updateGeneratedCode);
   // Add sandpack key to force remount when needed
   const [sandpackKey, setSandpackKey] = useState(0);
 
@@ -644,7 +648,7 @@ useEffect(() => {
     simulateProgress();
 
     try {
-      const aiModelId = "microsoft/mai-ds-r1:free";
+      const aiModelId = "deepseek/deepseek-chat:free";
       
       const conversationHistory = messages.map(msg => ({
         role: msg.role === "user" ? "user" : "assistant",
@@ -669,19 +673,27 @@ useEffect(() => {
       
       if (response?.generatedCode) {
         try {
-          const parsed = JSON.parse(response.generatedCode);
-          console.log("📝 Parsed code structure:", parsed);
+  const jsonStart = response.generatedCode.indexOf("{");
+  const jsonString = response.generatedCode.slice(jsonStart);
 
-          setFiles(prevFiles => {
-            const mergedFiles = { ...prevFiles, ...parsed.files };
-            return mergedFiles;
-          });
-          
-        
-        } catch (err) {
-          console.error("❌ Failed to parse generatedCode:", err.message);
-          console.warn("🔎 Raw response that failed to parse:", response.generatedCode);
-        }
+  const parsed = JSON.parse(jsonString);
+  console.log("📝 Parsed code structure:", parsed);
+
+  setFiles(prevFiles => ({
+    ...prevFiles,
+    ...parsed.files
+  }));
+
+  await updateGeneratedCode({
+    workspaceId: id,
+    code: JSON.stringify(parsed),
+  })
+
+} catch (err) {
+  console.error("❌ Still failed to parse generatedCode:", err.message);
+  console.warn("🔎 Raw response that failed to parse:", response.generatedCode);
+}
+
       }
 
  const endTime = Date.now();

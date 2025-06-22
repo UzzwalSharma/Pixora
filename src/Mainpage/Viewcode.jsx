@@ -43,96 +43,96 @@ function Viewcode() {
     }
   }, [id]); // Run once when `id` changes
 
-  const handleGitHubConnect = () => {
-    const clientId = "Ov23lifnqo04raYYUC9r";
-    const redirectUri = "https://pixora-s-frontend.vercel.app/github-oauth-callback";
+  // const handleGitHubConnect = () => {
+  //   const clientId = "Ov23lifnqo04raYYUC9r";
+  //   const redirectUri = "https://pixora-s-frontend.vercel.app/github-oauth-callback";
 
-    window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=repo&redirect_uri=${redirectUri}`;
-  };
+  //   window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=repo&redirect_uri=${redirectUri}`;
+  // };
 
-  const handlePushToGitHub = async () => {
-    const token = localStorage.getItem("github_token");
+  // const handlePushToGitHub = async () => {
+  //   const token = localStorage.getItem("github_token");
 
-    if (!token) {
-      alert("Please connect to GitHub first.");
-      return;
-    }
+  //   if (!token) {
+  //     alert("Please connect to GitHub first.");
+  //     return;
+  //   }
 
-    if (!user) {
-      alert("Please connect to GitHub first.");
-      return;
-    }
+  //   if (!user) {
+  //     alert("Please connect to GitHub first.");
+  //     return;
+  //   }
 
-    const repoName = "pixora-generated-code"; // Desired repo name
-    const filePath = `generated_code_${id}.js`; // Unique filename
-    const content = btoa(code); // Encode code in Base64 for GitHub API
+  //   const repoName = "pixora-generated-code"; // Desired repo name
+  //   const filePath = `generated_code_${id}.js`; // Unique filename
+  //   const content = btoa(code); // Encode code in Base64 for GitHub API
 
-    try {
-      // Check if repo exists, if not create one
-      try {
-        await axios.put(
-          `https://api.github.com/repos/${user.login}/${repoName}/contents/${filePath}`,
-          {
-            message: `Added generated code: ${id}`,
-            content,
-          },
-          {
-            headers: {
-              Authorization: `token ${token}`,
-            },
-          }
-        );
-      } catch (repoError) {
-        if (repoError.response && repoError.response.status === 404) {
-          // Repo doesn't exist, create it first
-          await axios.post(
-            `https://api.github.com/user/repos`,
-            {
-              name: repoName,
-              private: false, // or true based on your needs
-            },
-            {
-              headers: {
-                Authorization: `token ${token}`,
-              },
-            }
-          );
-          // Retry pushing code after repo is created
-          await axios.put(
-            `https://api.github.com/repos/${user.login}/${repoName}/contents/${filePath}`,
-            {
-              message: `Added generated code: ${id}`,
-              content,
-            },
-            {
-              headers: {
-                Authorization: `token ${token}`,
-              },
-            }
-          );
-        } else {
-          throw repoError;
-        }
-      }
+  //   try {
+  //     // Check if repo exists, if not create one
+  //     try {
+  //       await axios.put(
+  //         `https://api.github.com/repos/${user.login}/${repoName}/contents/${filePath}`,
+  //         {
+  //           message: `Added generated code: ${id}`,
+  //           content,
+  //         },
+  //         {
+  //           headers: {
+  //             Authorization: `token ${token}`,
+  //           },
+  //         }
+  //       );
+  //     } catch (repoError) {
+  //       if (repoError.response && repoError.response.status === 404) {
+  //         // Repo doesn't exist, create it first
+  //         await axios.post(
+  //           `https://api.github.com/user/repos`,
+  //           {
+  //             name: repoName,
+  //             private: false, // or true based on your needs
+  //           },
+  //           {
+  //             headers: {
+  //               Authorization: `token ${token}`,
+  //             },
+  //           }
+  //         );
+  //         // Retry pushing code after repo is created
+  //         await axios.put(
+  //           `https://api.github.com/repos/${user.login}/${repoName}/contents/${filePath}`,
+  //           {
+  //             message: `Added generated code: ${id}`,
+  //             content,
+  //           },
+  //           {
+  //             headers: {
+  //               Authorization: `token ${token}`,
+  //             },
+  //           }
+  //         );
+  //       } else {
+  //         throw repoError;
+  //       }
+  //     }
 
-      alert("✅ Code pushed to GitHub successfully!");
-    } catch (error) {
-      console.error("❌ Error pushing code to GitHub:", error);
-      alert("❌ Failed to push code.");
-    }
-  };
+  //     alert("✅ Code pushed to GitHub successfully!");
+  //   } catch (error) {
+  //     console.error("❌ Error pushing code to GitHub:", error);
+  //     alert("❌ Failed to push code.");
+  //   }
+  // };
 
 
 
  // Open subscription popup
- const handleVerify = () => {
-  setShowPopup(false);
-  window.open(
-    "https://meet.jit.si/Pixora-Expert-Ujjwal", // Your Jitsi meeting URL
-    "_blank",
-    "width=1000,height=700"
-  );
-};
+//  const handleVerify = () => {
+//   setShowPopup(false);
+//   window.open(
+//     "https://meet.jit.si/Pixora-Expert-Ujjwal", // Your Jitsi meeting URL
+//     "_blank",
+//     "width=1000,height=700"
+//   );
+// };
 
   return (
  
@@ -147,14 +147,10 @@ function Viewcode() {
               {/* User Info Section */}
               <UserSection />
     
-              {/* Rating Section */}
-              <div className="bg-white p-4 rounded-lg shadow-lg">
-                <h3 className="text-lg font-bold mb-2 text-center">Rate Your Experience</h3>
-                <Rating />
-              </div>
+             
     
               {/* GitHub User Info */}
-              {user ? (
+              {/* {user ? (
                 <div className="text-center bg-white p-4 rounded-lg shadow-lg">
                   <h3 className="font-bold text-lg">Welcome, {user.login}!</h3>
                   <h4 className="text-gray-600">This is your Pixora Panel</h4>
@@ -171,36 +167,19 @@ function Viewcode() {
                 >
                   Connect to GitHub
                 </button>
-              )}
+              )} */}
             </aside>
     
             {/* Main Content Section */}
-            <main className="md:col-span-4 bg-white p-6 rounded-lg shadow-lg">
+            <main className="md:col-span-4 bg-white p-6 rounded-lg shadow-lg pt-4">
               <CodeEditor code={code} />
 
                {/* Full Stack Solution CTA */}
-  <div className="flex justify-center mt-6">
-    <Link to="/websiteorder">
-    <button
-      // onClick={() => setShowFullStackForm(true)} // this will trigger modal/form
-      className="shimmer-button relative px-8 py-3 bg-gradient-to-r from-orange-500 to-yellow-400 text-white rounded-xl shadow-lg text-lg font-semibold transition-all hover:scale-105 hover:shadow-xl"
-    >
-   Want to convert it into full stack ?
-
-
-    </button></Link>
-
-   
-  </div>
-  <div>
-    <p className="text-center text-sm text-gray-600 mt-2 italic">
-  Get a production-ready site delivered in hours – tailored just for you.
-</p>
-    </div>
+  
             </main>
           </div>
     
-          {/* User Panel & GitHub Info */}
+          {/* User Panel & GitHub Info
           <section className="w-[80vw] bg-white rounded-lg p-6 flex flex-col md:flex-row justify-between items-center mx-auto mt-6 border-2 border-green-400 shadow-lg">
             <button
               onClick={() => setShowPopup(true)}
@@ -234,13 +213,13 @@ function Viewcode() {
   >
     Push to GitHub 🚀
   </button>
-          </section>
+          </section> */}
         
           {/* Subscription Popup */}
-          {showPopup && <SubscriptionPopup onClose={() => setShowPopup(false)} onVerify={handleVerify} />}
+          {/* {showPopup && <SubscriptionPopup onClose={() => setShowPopup(false)} onVerify={handleVerify} />} */}
     
           {/* Footer */}
-          <footer className="text-black py-6 mt-auto">
+          {/* <footer className="text-black py-6 mt-auto">
             <div className="text-center">
               <p className="text-sm md:text-base font-bold">
                 Crafted with ❤️ by <span className="text-green-400">Team Syntax Squad</span>
@@ -249,7 +228,24 @@ function Viewcode() {
                 Ham hi wo jinki wajah se Designers ki job jaegi! (Bas, mazaak kar rahe hain 😜)
               </p>
             </div>
-          </footer>
+          </footer> */}
+           {/* Rating Section */}
+        <div className="w-full bg-gradient-to-r from-green-400 to-blue-500 py-8 mt-12 rounded-md shadow-xl">
+  <h3 className="text-2xl font-extrabold text-white text-center mb-4 tracking-wide">
+    Rate This Pixora Design
+  </h3>
+
+  <div className="flex justify-center items-center">
+    <div className="bg-white p-4 rounded-lg shadow-md">
+      <Rating />
+    </div>
+  </div>
+
+  <p className="text-center text-black text-sm mt-4 opacity-80">
+    Your feedback helps us vibe even better ✨
+  </p>
+</div>
+
         </div>
       );
     }

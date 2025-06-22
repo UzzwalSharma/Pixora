@@ -18,7 +18,7 @@ const Header = () => {
 >
 
         <img
-  src="/Logo2.jpg"
+  src="/pixoranewlogo.jpg"
   alt="Pixora Logo"
   className="h-14 w-14 object-contain rounded-full group-hover:scale-110 transition-transform duration-300"
 />

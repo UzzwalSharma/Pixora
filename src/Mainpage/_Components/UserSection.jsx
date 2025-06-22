@@ -29,24 +29,7 @@ const UserSection = () => {
       });
   }, [id]);
 
-  const handleRegenerate = async () => {
-    if (!newDescription.trim()) return alert("Description cannot be empty!");
-
-    setIsRegenerating(true);
-    try {
-      const response = await axios.post(
-        `http://localhost:5000/regenerate-code/${id}`,
-        { description: newDescription }
-      );
-      setData(response.data); // Update with the new generated data
-      alert("Code successfully regenerated! 🎉");
-    } catch (error) { 
-      console.error("❌ Error regenerating code:", error);
-      alert("Failed to regenerate code. Try again.");
-    }
-    setIsRegenerating(false);
-  };
-
+  
   if (loading)
     return <p className="text-center text-gray-400 animate-pulse">Loading...</p>;
   if (error)
@@ -165,17 +148,17 @@ const UserSection = () => {
 
 
       {/* Created At Section */}
-      <motion.h3
+      {/* <motion.h3
         className="text-lg font-medium text-green-400 mt-6 text-center"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 1, duration: 0.6 }}
       >
         Created At
-      </motion.h3>
-      <p className="text-gray-400 italic text-center mt-2 text-sm">
+      </motion.h3> */}
+      {/* <p className="text-gray-400 italic text-center mt-2 text-sm">
         {new Date(data.timestamp).toLocaleString()}
-      </p>
+      </p> */}
     </motion.div>
   );
 };

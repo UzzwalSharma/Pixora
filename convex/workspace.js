@@ -71,6 +71,9 @@ export const addMessageToWorkspace = mutation({
       message: [...currentMessages, cleanUserMessage, cleanAiMessage],
     });
     
+
+
+    
     // Return the clean messages (frontend will add UI metadata as needed)
     return { userMessage: cleanUserMessage, aiMessage: cleanAiMessage };
   },
@@ -172,5 +175,29 @@ export const getById = query({
   args: { id: v.id("workspace") },
   handler: async (ctx, args) => {
     return await ctx.db.get(args.id);
+  },
+});
+
+//updateGeneratedCode mutation
+// This mutation allows updating the generated code for a workspace
+export const updateGeneratedCode = mutation({
+  args: {
+    workspaceId: v.id("workspace"),
+    code: v.any(),
+  },
+  handler: async (ctx, args) => {
+    const identity = await ctx.auth.getUserIdentity();
+    if (!identity) throw new Error("Not authenticated");
+
+    const workspace = await ctx.db.get(args.workspaceId);
+    if (!workspace) {
+      throw new Error("Workspace not found");
+    }
+
+    await ctx.db.patch(args.workspaceId, {
+      code: args.code,
+    });
+
+    return { success: true, updatedCode: args.code };
   },
 });

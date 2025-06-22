@@ -14,7 +14,7 @@ function Main_Layout() {
       {/* Sidebar */}
       <aside
         className={`bg-white border-r border-zinc-200 shadow-sm overflow-hidden transition-all duration-300 ${
-          sidebarOpen ? 'w-[260px]' : 'w-0'
+          sidebarOpen ? 'w-[300px]' : 'w-0'
         }`}
       >
         {sidebarOpen && <Sidebar />}
@@ -35,9 +35,9 @@ function Main_Layout() {
 >
   <button
     onClick={() => setSidebarOpen((prev) => !prev)}
-    className="backdrop-blur-md bg-white/10 border border-white/20 rounded-full shadow-lg px-3 py-1 text-white hover:bg-white/20 transition"
+    className="cursor-pointer  backdrop-blur-md bg-white/10 border border-white/20 rounded-full shadow-lg px-3 py-1 text-white hover:bg-white/20 transition"
   >
-    {sidebarOpen ? <SidebarOpenIcon size={18} /> : <SidebarCloseIcon size={18} />}
+    {sidebarOpen ? <SidebarOpenIcon size={28} /> : <SidebarCloseIcon size={28} />}
   </button>
 
   {showTooltip && (

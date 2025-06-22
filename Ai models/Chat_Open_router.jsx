@@ -12,68 +12,48 @@ const CHAT_PROMPT = dedent`
 `;
 
 
-const PROMPT=dedent`
-Generate a Project in React. Create multiple components, organizing them in separate folders with filenames using the .js extension, if needed. The output should use Tailwind CSS for styling, 
-without any third-party dependencies or libraries, except for icons from the lucide-react library, which should only be used when necessary. Available icons include: Heart, Shield, Clock, Users, Play, Home, Search, Menu, User, Settings, Mail, Bell, Calendar, Star, Upload, Download, Trash, Edit, Plus, Minus, Check, X, and ArrowRight. For example, you can import an icon as import { Heart } from "lucide-react" and use it in JSX as <Heart className="" />.
-also you can use date-fns for date format and react-chartjs-2 chart, graph library
+const PROMPT = dedent`
+Generate a complete React project using Vite. Structure code in multiple components with .js extensions, organized into folders. Use Tailwind CSS for styling only. Icons must be from lucide-react (e.g., import { Heart } from "lucide-react" → <Heart className="" />).
 
-Return a JSON object like:
+✨ Allowed packages:
+- date-fns (date formatting)
+- react-chartjs-2 (charts) — register all required components via ChartJS.register(...)
+- firebase and @google/generative-ai — only if asked
+
+📦 Output JSON format:
 {
   "projectTitle": "string",
   "explanation": "string",
   "files": {
     "/App.js": { "code": "..." },
-    "/components/Button.js": { "code": "..." }
+    "/components/ChartCard.js": { "code": "..." }
   },
-  "generatedFiles": ["/App.js", "/components/Button.js"]
+  "generatedFiles": ["/App.js", "/components/ChartCard.js"]
 }
 
- **Rules**:
+✅ Rules:
+- All imports must resolve and match defined files
+- No broken JSX, undefined variables, or missing components
+- Use emojis 🎯📊✅ for a delightful UI
+- Use Unsplash  or https://archive.org/download/placeholder-image/placeholder-image.jpg for images
+-Use valid Unsplash image URLs with full links (e.g., https://images.unsplash.com/...) — do NOT use source.unsplash.com or tag-based URLs.
+- Charts must be polished (tooltips, labels, gradients)
+- Use date-fns for formatted output (e.g., format(new Date(), "PPP"))
+- Layouts should be responsive with Tailwind transitions and hover states
+- Components must be visually beautiful and ready for production — no boilerplate
 
-- Validate that all files referenced in generatedFiles exist in files
-- Do not include incomplete code or reference missing imports. Every import must resolve.
--Do not import any component that you haven’t defined in the files object. Missing files will cause runtime errors.
-- Ensure all components are functional and can be rendered without errors.
--When using react-chartjs-2, always import and register necessary chart types and components (e.g., CategoryScale, LinearScale, PointElement, BarElement, LineElement, etc.) using ChartJS.register(...) at the top. Otherwise, the chart will break in Chart.js v3+.
--Make sure if using react-chartjs-2, you import and register necessary chart types and components (e.g., CategoryScale, LinearScale, PointElement, BarElement, LineElement, etc.) using ChartJS.register(...) at the top. Otherwise, the chart will break in Chart.js v3+.
-Explanation:
-- Keep it 1 or two liner just .
+💡 Examples to include:
+- AnalyticsDashboard with <LineChart /> & <BarChart />
+- Data cards with icons and buttons
+- UI should follow Tailwind best practices
+
+Return JSON only. No extra commentary.
+`;
 
 
-Here’s the reformatted and improved version of your prompt:
 
-Generate a programming code structure for a React project using Vite. Create multiple components, organizing them in separate folders with filenames using the .js extension, if needed. The output should use Tailwind CSS for styling, without any third-party dependencies or libraries, except for icons from the lucide-react library, which should only be used when necessary. Available icons include: Heart, Shield, Clock, Users, Play, Home, Search, Menu, User, Settings, Mail, Bell, Calendar, Star, Upload, Download, Trash, Edit, Plus, Minus, Check, X, and ArrowRight. For example, you can import an icon as import { Heart } from "lucide-react" and use it in JSX as <Heart className="" />.
 
-Return a JSON object like:
-{
-  "projectTitle": "string",
-  "explanation": "string",
-  "files": {
-    "/App.js": { "code": "..." },
-    "/components/Button.js": { "code": "..." }
-  },
-  "generatedFiles": ["/App.js", "/components/Button.js"]
-}
-}
-Ensure the files field contains all created files, and the generatedFiles field lists all the filenames. Each file's code should be included in the code field, following this example:
-files:{
-  "/App.js": {
-    "code": "import React from 'react';\nimport './styles.css';\nexport default function App() {\n  return (\n    <div className='p-4 bg-gray-100 text-center'>\n      <h1 className='text-2xl font-bold text-blue-500'>Hello, Tailwind CSS with Sandpack!</h1>\n      <p className='mt-2 text-gray-700'>This is a live code editor.</p>\n    </div>\n  );\n}"
-  }
-}
-  Additionally, include an explanation of the project's structure, purpose, and functionality in the explanation field. Make the response concise and clear in one paragraph.
-  - When asked then only use this package to import, here are some packages available to import and use (date-fns,react-chartjs-2,"firebase","@google/generative-ai" ) only when it required
-  
-  - For placeholder images, please use a https://archive.org/download/placeholder-image/placeholder-image.jpg
-  -Add Emoji icons whenever needed to give good user experinence
-  - all designs I ask you to make, have them be beautiful, not cookie cutter. Make webpages that are fully featured and worthy for production.
 
-- By default, this template supports JSX syntax with Tailwind CSS classes, React hooks, and Lucide React for icons. Do not install other packages for UI themes, icons, etc unless absolutely necessary or I request them.
-
-- Use icons from lucide-react for logos.
-
-- Use stock photos from unsplash where appropriate, only valid URLs you know exist. Do not download the images, only link to them in image tags.
-   `;
 
 
 // Updated API service to accept conversation history and maintain context

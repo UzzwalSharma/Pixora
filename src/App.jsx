@@ -18,7 +18,7 @@ import GitHubOAuthCallback from "./GitHubOAuthCallback";
 import Chat from "./Dashboard/_Components/Chat";
 import Workspace from "./Workspace/MainWorkspace.jsx";
 import Policy from "/src/Privacy.jsx"
-
+import Chatcreator from "./Dashboard/_Components/Chat/Chat.jsx";
 function App() {
   return (
    <>
@@ -68,6 +68,7 @@ function App() {
          <Route path="/auth/github/callback" element={<GitHubOAuthCallback />} />
 
          <Route path="/privacypolicy" element={<Policy/>} />
+         <Route path="/chat" element={<Chatcreator/>} />
 
       </Routes>
     </Router>
