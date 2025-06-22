@@ -65,8 +65,8 @@ function App() {
 
          <Route path="contact" element={<GetInTouch />} />
          <Route path="pricing" element={<Pricing />} />
-         <Route path="/github-oauth-callback" element={<GitHubOAuthCallback />} />
-        
+         <Route path="/auth/github/callback" element={<GitHubOAuthCallback />} />
+
          <Route path="/privacypolicy" element={<Policy/>} />
 
       </Routes>

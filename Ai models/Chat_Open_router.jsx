@@ -28,6 +28,18 @@ Return a JSON object like:
   "generatedFiles": ["/App.js", "/components/Button.js"]
 }
 
+ **Rules**:
+
+- Validate that all files referenced in generatedFiles exist in files
+- Do not include incomplete code or reference missing imports. Every import must resolve.
+-Do not import any component that you haven’t defined in the files object. Missing files will cause runtime errors.
+- Ensure all components are functional and can be rendered without errors.
+-When using react-chartjs-2, always import and register necessary chart types and components (e.g., CategoryScale, LinearScale, PointElement, BarElement, LineElement, etc.) using ChartJS.register(...) at the top. Otherwise, the chart will break in Chart.js v3+.
+-Make sure if using react-chartjs-2, you import and register necessary chart types and components (e.g., CategoryScale, LinearScale, PointElement, BarElement, LineElement, etc.) using ChartJS.register(...) at the top. Otherwise, the chart will break in Chart.js v3+.
+Explanation:
+- Keep it 1 or two liner just .
+
+
 Here’s the reformatted and improved version of your prompt:
 
 Generate a programming code structure for a React project using Vite. Create multiple components, organizing them in separate folders with filenames using the .js extension, if needed. The output should use Tailwind CSS for styling, without any third-party dependencies or libraries, except for icons from the lucide-react library, which should only be used when necessary. Available icons include: Heart, Shield, Clock, Users, Play, Home, Search, Menu, User, Settings, Mail, Bell, Calendar, Star, Upload, Download, Trash, Edit, Plus, Minus, Check, X, and ArrowRight. For example, you can import an icon as import { Heart } from "lucide-react" and use it in JSX as <Heart className="" />.
@@ -154,40 +166,37 @@ export async function generateResponseLegacy(userMessage, aiModelId, imageUrl = 
 
 // Main Code generator function
 
-export async function generateCodeResponse(userMessage, aiModelId, imageUrl) {
+export async function generateCodeResponse(userMessage, aiModelId, imageUrl, conversationHistory = []) {
   try {
-   
-
-
     console.log("🟢 Received Params:");
-    
     console.log("User Description:", userMessage);
     console.log("Image URL:", imageUrl);
     console.log("Model:", aiModelId);
+    console.log("Conversation History Length:", conversationHistory?.length || 0);
 
-    // Merge the optimized prompt with the user's  description
+    // Merge the optimized prompt with the user's description
     const finalPrompt = `${PROMPT}\n\nUser Description: ${userMessage}`;
 
-    // ✅ Send request in the format the backend expects
+    // ✅ Send request with conversation history
     const requestBody = {
       imageUrl: imageUrl,
-    
       description: userMessage,
       modelName: aiModelId,
       prompt: finalPrompt,
+      conversationHistory: conversationHistory || [] // Add conversation history
     };
 
-    console.log("📤 Sending Request:", requestBody);
+    console.log("📤 Sending Request with conversation history:", requestBody);
 
     // Send request to the backend
     const response = await axios.post("http://localhost:5000/openroutermain", requestBody, {
       headers: { "Content-Type": "application/json" },
     });
 
-    // console.log("🚀 AI Response:", response.data); 
+    console.log("🚀 AI Response:", response.data);
 
-    // ✅ Return the full response object (including `_id`)
-    return response.data;  
+    // ✅ Return the full response object
+    return response.data;
   } catch (error) {
     console.error("❌ Error generating response:", error.message);
     return null;

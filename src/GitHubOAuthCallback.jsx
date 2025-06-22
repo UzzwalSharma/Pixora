@@ -18,7 +18,7 @@ function GitHubOAuthCallback() {
 
       try {
         console.log("🔄 Fetching GitHub token with code:", code);
-        const response = await axios.post("https://pixora-s-backend.onrender.com/github-oauth", { code });
+        const response = await axios.post("http://localhost:5000/github-oauth", { code });
 
         const { access_token } = response.data;
 
