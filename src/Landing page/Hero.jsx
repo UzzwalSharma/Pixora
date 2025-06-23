@@ -30,7 +30,7 @@ const Hero = () => {
         muted
         className="absolute top-0 left-0 w-full h-full object-cover opacity-50"
       >
-        <source src="/background.mp4" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dvmqxb8kd/video/upload/v1750642977/18069232-uhd_3840_2160_24fps_xt468f.mp4" type="video/mp4" />
       </video>
 
       {/* Hero Content */}
