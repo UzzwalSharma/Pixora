@@ -315,9 +315,9 @@ const PricingSection = () => {
       description: "Perfect for individuals and small projects getting started with AI website building.",
       features: [
         "5 AI-generated websites/day",
-        "Basic templates library",
-        "Email support",
-        "Mobile responsive design"
+        "Community templates access",
+        "Mobile responsive design",
+        "Deploy to Pixora hosting",
       ],
       buttonText: "Start Building"
     },
@@ -331,7 +331,7 @@ const PricingSection = () => {
 "Access to Community templates",
         "Advanced AI customization",
         "Priority support",
-       
+       "Dedicated hosting",
         "Git hub integration",
        "Video call support",
         "Responsive design for all devices",
@@ -351,8 +351,8 @@ const PricingSection = () => {
         "Unlimited AI-generated websites",
         "Access to all templates",
         "White-label solution",
-        "API access",
         "Dedicated support team",
+        "Domain hosting",
         "Custom integrations",
         "Team collaboration",
         "24/7 phone support"

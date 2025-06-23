@@ -15,7 +15,13 @@ const plans = [
     name: "Pro",
     price: "$9.99/mo",
     icon: <FaStar className="text-blue-400 text-5xl drop-shadow-glow" />, // Neon glow
-    features: ["Unlimited Wireframe Conversion", "Figma Integration", "Priority Support"],
+    features: [ "5 AI-generated websites/day",
+        "Community templates access",
+        "Mobile responsive design",
+        "Deploy to Pixora hosting", "5 AI-generated websites/day",
+        "Community templates access",
+        "Mobile responsive design",
+        "Deploy to Pixora hosting",],
     buttonText: "Upgrade to Pro",
     buttonStyle: "bg-blue-500 hover:bg-blue-600",
   },
@@ -23,7 +29,17 @@ const plans = [
     name: "Premium",
     price: "$19.99/mo",
     icon: <FaCrown className="text-yellow-400 text-5xl drop-shadow-glow" />, // Neon glow
-    features: ["AI-Enhanced Designs", "Export to Code (React, Tailwind)", "Dedicated Support"],
+    features:[
+        "10 AI-generated websites/day",
+"Access to Community templates",
+        "Advanced AI customization",
+        "Priority support",
+       "Dedicated hosting",
+        "Git hub integration",
+       "Video call support",
+        "Responsive design for all devices",
+       
+      ],
     buttonText: "Go Premium",
     buttonStyle: "bg-yellow-500 hover:bg-yellow-600",
   },

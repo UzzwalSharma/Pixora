@@ -20,7 +20,7 @@ Generate a complete React project using Vite. Structure code in multiple compone
 - react-chartjs-2 (charts) — register all required components via ChartJS.register(...)
 - firebase and @google/generative-ai — only if asked
 
-📦 Output JSON format:
+📦 Output JSON format(strictly follow):
 {
   "projectTitle": "string",
   "explanation": "string",
@@ -41,6 +41,18 @@ Generate a complete React project using Vite. Structure code in multiple compone
 - Use date-fns for formatted output (e.g., format(new Date(), "PPP"))
 - Layouts should be responsive with Tailwind transitions and hover states
 - Components must be visually beautiful and ready for production — no boilerplate
+- All components must be beautiful, production-ready, and polished
+- Use <Link> from react-router-dom for navigation when needed
+- All buttons must be interactive and have hover/focus states
+
+
+✅ Dependencies allowed:
+- tailwindcss, tailwindcss-animate, postcss, autoprefixer, tailwind-merge
+- lucide-react (icons only — import { Icon } from "lucide-react")
+- uuid4 (for IDs), react-router-dom (v7+), firebase (v11+)
+- @google/generative-ai (if asked), date-fns (for formatting)
+- chart.js and react-chartjs-2 (register via ChartJS.register(...))
+- framer-motion, react-spring (for animation), react-intersection-observer
 
 💡 Examples to include:
 - AnalyticsDashboard with <LineChart /> & <BarChart />
@@ -49,12 +61,6 @@ Generate a complete React project using Vite. Structure code in multiple compone
 
 Return JSON only. No extra commentary.
 `;
-
-
-
-
-
-
 
 // Updated API service to accept conversation history and maintain context
 export async function generateResponse(userMessage, options = {}) {
@@ -118,7 +124,7 @@ export async function generateResponse(userMessage, options = {}) {
       lastUserMessage: messageText
     });
 
-    const response = await axios.post("http://localhost:5000/openroutertest", requestBody, {
+    const response = await axios.post("https://pixora-s-backend.onrender.com/openroutertest", requestBody, {
       headers: {
         'Content-Type': 'application/json',
       }
@@ -169,7 +175,7 @@ export async function generateCodeResponse(userMessage, aiModelId, imageUrl, con
     console.log("📤 Sending Request with conversation history:", requestBody);
 
     // Send request to the backend
-    const response = await axios.post("http://localhost:5000/openroutermain", requestBody, {
+    const response = await axios.post("https://pixora-s-backend.onrender.com/openroutermain", requestBody, {
       headers: { "Content-Type": "application/json" },
     });
 

@@ -1085,14 +1085,7 @@ const handleCloseDeployPopup = useCallback(() => {
                     style={{ height: "100%" }}
                   />
                 ) : (
-                  // <SandpackPreview 
-                  //   showNavigator={true}
-                  //   showRefreshButton={true}
-                  //   className="h-full"
-                  //   style={{ height: "100%" }}
-                  //   // Add error boundary and refresh key
-                  //   key={`preview-${sandpackKey}`}
-                  // />
+                 
                  <Sandpackpreview 
   ref={sandpackPreviewRef}
   className="h-full"
