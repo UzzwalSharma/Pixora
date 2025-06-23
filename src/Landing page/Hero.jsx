@@ -100,7 +100,7 @@ const Hero = () => {
       >
         <video
           className="w-[320px] h-[200px] rounded-lg"
-          src="/intro.mp4"
+          src="https://res.cloudinary.com/dvmqxb8kd/video/upload/v1750646342/intro_rdciqh.mp4"
           type="video/mp4"
           autoPlay
           loop
