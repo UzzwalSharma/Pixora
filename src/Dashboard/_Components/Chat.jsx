@@ -483,34 +483,35 @@ const handleSendMessage = async () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                 >
-                    <div className="text-center space-y-3">
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.2, duration: 0.5 }}
-                            className="inline-block"
-                        >
-                            <h1 className="text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white/90 to-white/40 pb-1">
-                               What would you like to create today?
-                            </h1>
-                            <motion.div
-                                className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                                initial={{ width: 0, opacity: 0 }}
-                                animate={{ width: "100%", opacity: 1 }}
-                                transition={{ delay: 0.5, duration: 0.8 }}
-                            />
-                        </motion.div>
-                         <motion.p
-                            className="text-sm text-white/40"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.3 }}
-                        >
-                            {user
-                                ? `Let's design something amazing together, ${user.firstName || user.username || user.emailAddress || "Pixora User"}!`
-                                : "Let's design something amazing together!"}
-                        </motion.p>
-                    </div>
+                   <div className="text-center space-y-3">
+  <motion.div
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.2, duration: 0.5 }}
+    className="inline-block"
+  >
+    <h1 className="text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white/90 to-white/40 pb-1">
+      What's on your mind today, {user.firstName} ?
+    </h1>
+
+    <motion.div
+      className="h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
+      initial={{ width: 0, opacity: 0 }}
+      animate={{ width: "100%", opacity: 1 }}
+      transition={{ delay: 0.5, duration: 0.8 }}
+    />
+  </motion.div>
+
+  <motion.p
+    className="text-sm text-white/40"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.3 }}
+  >
+    Let's design something amazing together!
+  </motion.p>
+</div>
+
 
                     <motion.div
                         className="relative mx-auto backdrop-blur-2xl bg-white/[0.02] rounded-2xl border border-white/[0.05] shadow-2xl w-full"
