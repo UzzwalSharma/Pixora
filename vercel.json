@@ -1,6 +1,6 @@
 {
-    "rewrites": [
-      { "source": "/(.*)", "destination": "/" }
-    ]
-  }
-  
+  "buildCommand": "./vercel-build.sh",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}
