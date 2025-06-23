@@ -24,14 +24,14 @@ function Showcase() {
         </div>
         <motion.div
           style={{
-            opacity,
+            opacity:"1",
             rotateX: rotateX,
             transformPerspective: "800px",
           }}
           className="mx-auto shadow-2xl"
         >
           <img
-            src="/image.png"
+            src="/showcase.png"
             alt="pixora showcase"
             className="mt-14 rounded-2xl"
           />
