@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://res.cloudinary.com/dvmqxb8kd/image/upload/v1750647392/6a803f79-375d-4854-8bd3-7909990986e2_nqjcaw.jpg" alt="Pixora Logo" width="150"/>
+  <img src="https://res.cloudinary.com/dvmqxb8kd/image/upload/v1750647392/6a803f79-375d-4854-8bd3-7909990986e2_nqjcaw.jpg" alt="Pixora Logo" width="250"/>
 </p>
 
 # ⚡ Pixora — India's First Vibe-Coded Website Builder
@@ -67,7 +67,7 @@ All in a sleek, intuitive interface — built to **feel fun, fast, and truly you
 ![Pixora Dashboard](https://res.cloudinary.com/dvmqxb8kd/image/upload/v1750646979/Screenshot_2025-06-22_205018_tof4rd.png)
 
 ### Example
-![Example](https://res.cloudinary.com/dvmqxb8kd/image/upload/v1750646979/Screenshot_2025-06-22_205018_tof4rd.png)
+![Example](https://res.cloudinary.com/dvmqxb8kd/image/upload/v1750647098/Screenshot_2025-06-20_091015_eaxy9a.png)
 ### 💻 Live Code Editor
 ![Pixora Editor](https://res.cloudinary.com/dvmqxb8kd/image/upload/v1750647272/Screenshot_2025-06-22_210634_uo0lgo.png)
 
