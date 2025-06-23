@@ -74,6 +74,10 @@ All in a sleek, intuitive interface — built to **feel fun, fast, and truly you
 ### 🚀 Expert support 
 ![Real time support](https://res.cloudinary.com/dvmqxb8kd/image/upload/v1750647325/Screenshot_2025-06-21_094810_xbvxhk.png)
 
+### ☁️ </> One Click GitHub Push  
+![Github Sync](https://res.cloudinary.com/dvmqxb8kd/image/upload/v1750653151/Screenshot_2025-06-23_100127_xm0whd.png)
+
+
 
 ## 🤍 Join the Movement
 
