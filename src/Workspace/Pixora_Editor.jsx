@@ -40,7 +40,7 @@ import Sandpackpreview from "./Sandpackpreview";
 import DeploySuccessPopup from "./Deployment";
 import { useMutation } from "convex/react";
 
-const {id} = useParams();
+// const {id} = useParams();
 
 // Constants
 const THEME_COLORS = {
