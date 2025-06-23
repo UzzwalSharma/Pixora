@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://res.cloudinary.com/dvmqxb8kd/image/upload/v1750647392/6a803f79-375d-4854-8bd3-7909990986e2_nqjcaw.jpg" alt="Pixora Logo" width="150"/>
+</p>
+
 # ⚡ Pixora — India's First Vibe-Coded Website Builder
 
 Pixora is a revolutionary platform designed for **creators, students, non-tech users, and small businesses** who have great ideas—but lack the tools to bring them to life. Unlike other rigid platforms, Pixora empowers users to build fully custom, production-ready websites **without writing a single line of code**.
@@ -57,6 +61,18 @@ All in a sleek, intuitive interface — built to **feel fun, fast, and truly you
 **Cloudinary**(for image uplodation)
 ---
 
+## 📸 Screenshots
+
+### 🎯 Dashboard
+![Pixora Dashboard](https://res.cloudinary.com/dvmqxb8kd/image/upload/v1750646979/Screenshot_2025-06-22_205018_tof4rd.png)
+
+### Example
+![Example](https://res.cloudinary.com/dvmqxb8kd/image/upload/v1750646979/Screenshot_2025-06-22_205018_tof4rd.png)
+### 💻 Live Code Editor
+![Pixora Editor](https://res.cloudinary.com/dvmqxb8kd/image/upload/v1750647272/Screenshot_2025-06-22_210634_uo0lgo.png)
+
+### 🚀 Expert support 
+![Real time support](https://res.cloudinary.com/dvmqxb8kd/image/upload/v1750647325/Screenshot_2025-06-21_094810_xbvxhk.png)
 
 
 ## 🤍 Join the Movement
