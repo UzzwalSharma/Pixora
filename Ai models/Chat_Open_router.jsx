@@ -35,6 +35,7 @@ Generate a complete React project using Vite. Structure code in multiple compone
 - All imports must resolve and match defined files
 - No broken JSX, undefined variables, or missing components
 - Use emojis 🎯📊✅ for a delightful UI
+-Do not invent or misspell package names like 'lide-react', always use real npm packages.
 - Use Unsplash  or https://archive.org/download/placeholder-image/placeholder-image.jpg for images
 -Use valid Unsplash image URLs with full links (e.g., https://images.unsplash.com/...) — do NOT use source.unsplash.com or tag-based URLs.
 - Charts must be polished (tooltips, labels, gradients)
