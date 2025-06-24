@@ -7,7 +7,12 @@ const plans = [
     name: "Free",
     price: "$0/mo",
     icon: <FaCheck className="text-green-400 text-5xl drop-shadow-glow" />, // Neon glow
-    features: ["Basic Wireframe Conversion", "Limited Exports", "Community Access"],
+    features: [
+        "5 AI-generated websites/day",
+        "Community templates access",
+        "Mobile responsive design",
+        "Deploy to Pixora hosting",
+      ],
     buttonText: "Get Started",
     buttonStyle: "bg-green-500 hover:bg-green-600",
   },
@@ -15,21 +20,7 @@ const plans = [
     name: "Pro",
     price: "$9.99/mo",
     icon: <FaStar className="text-blue-400 text-5xl drop-shadow-glow" />, // Neon glow
-    features: [ "5 AI-generated websites/day",
-        "Community templates access",
-        "Mobile responsive design",
-        "Deploy to Pixora hosting", "5 AI-generated websites/day",
-        "Community templates access",
-        "Mobile responsive design",
-        "Deploy to Pixora hosting",],
-    buttonText: "Upgrade to Pro",
-    buttonStyle: "bg-blue-500 hover:bg-blue-600",
-  },
-  {
-    name: "Premium",
-    price: "$19.99/mo",
-    icon: <FaCrown className="text-yellow-400 text-5xl drop-shadow-glow" />, // Neon glow
-    features:[
+     features: [
         "10 AI-generated websites/day",
 "Access to Community templates",
         "Advanced AI customization",
@@ -39,6 +30,24 @@ const plans = [
        "Video call support",
         "Responsive design for all devices",
        
+      ],
+    buttonText: "Upgrade to Pro",
+    buttonStyle: "bg-blue-500 hover:bg-blue-600",
+  },
+  {
+    name: "Premium",
+    price: "$19.99/mo",
+    icon: <FaCrown className="text-yellow-400 text-5xl drop-shadow-glow" />, // Neon glow
+    features:[
+        "Everything in Professional",
+        "Unlimited AI-generated websites",
+        "Access to all templates",
+        "White-label solution",
+        "Dedicated support team",
+        "Domain hosting",
+        "Custom integrations",
+        "Team collaboration",
+        "24/7 phone support"
       ],
     buttonText: "Go Premium",
     buttonStyle: "bg-yellow-500 hover:bg-yellow-600",

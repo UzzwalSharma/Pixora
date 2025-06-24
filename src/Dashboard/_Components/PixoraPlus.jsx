@@ -10,7 +10,7 @@ const plans = [
     name: "Free",
     price: "$0/mo",
     icon: <FaCheck className="text-green-400 text-4xl drop-shadow-glow" />,
-    features: ["Basic Wireframe Conversion", "Limited Exports", "Community Access"],
+    features: ["Basic Wireframe Conversion", "Free Tokens for generating upto 5 websites", "Community Access"],
     buttonText: "Get Started",
     buttonStyle: "bg-green-500 hover:bg-green-600",
     badge: null,
@@ -20,12 +20,16 @@ const plans = [
     price: "$9.99/mo",
     icon: <FaStar className="text-blue-400 text-4xl drop-shadow-glow" />,
     features: [
-      "Unlimited Wireframe Conversion",
-      "Full stack delivery in 4-5 days",
-      "2 Full stack websites",
-      "Priority Support",
-      "GitHub Code Push",
-    ],
+        "10 AI-generated websites/day",
+"Access to Community templates",
+        "Advanced AI customization",
+        "Priority support",
+       "Dedicated hosting",
+        "Git hub integration",
+       "Video call support",
+        "Responsive design for all devices",
+       
+      ],
     buttonText: "Upgrade to Pro",
     buttonStyle: "bg-blue-500 hover:bg-blue-600",
     badge: "Popular",
@@ -35,14 +39,16 @@ const plans = [
     price: "$19.99/mo",
     icon: <FaCrown className="text-yellow-400 text-4xl drop-shadow-glow" />,
     features: [
-      "AI-Enhanced Designs",
-      "Full stack delivery in 24-48 hours",
-      "2-4 Full stack websites",
-      "Dedicated Support",
-      "Chat with Experts",
-      "Call with Experts",
-      "GitHub Code Push",
-    ],
+        "Everything in Professional",
+        "Unlimited AI-generated websites",
+        "Access to all templates",
+        "White-label solution",
+        "Dedicated support team",
+        "Domain hosting",
+        "Custom integrations",
+        "Team collaboration",
+        "24/7 phone support"
+      ],
     buttonText: "Go Premium",
     buttonStyle: "bg-yellow-500 hover:bg-yellow-600",
     badge: "Best Value",
@@ -70,7 +76,7 @@ const PixoraPlus = () => {
       </p>
 
       {/* Plans */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 z-10 relative">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 z-10 relative p-0">
         {plans.map((plan, index) => (
           <motion.div
             key={index}
