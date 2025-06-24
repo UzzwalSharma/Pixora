@@ -12,7 +12,7 @@ function GitHubOAuthCallback() {
 
       if (!code) {
         console.error("❌ GitHub OAuth code not found.");
-        setTimeout(() => navigate("/dashboard"), 6000);
+        setTimeout(() => navigate("/dashboard"), 4000);
         return;
       }
 
