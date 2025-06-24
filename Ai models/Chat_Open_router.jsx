@@ -124,7 +124,7 @@ export async function generateResponse(userMessage, options = {}) {
       lastUserMessage: messageText
     });
 
-    const response = await axios.post("https://pixora-s-backend.onrender.com/openroutertest", requestBody, {
+    const response = await axios.post("http://localhost:5000/openroutertest", requestBody, {
       headers: {
         'Content-Type': 'application/json',
       }
@@ -175,7 +175,7 @@ export async function generateCodeResponse(userMessage, aiModelId, imageUrl, con
     console.log("📤 Sending Request with conversation history:", requestBody);
 
     // Send request to the backend
-    const response = await axios.post("https://pixora-s-backend.onrender.com/openroutermain", requestBody, {
+    const response = await axios.post("http://localhost:5000/openroutermain", requestBody, {
       headers: { "Content-Type": "application/json" },
     });
 

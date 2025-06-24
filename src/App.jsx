@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Landingpage from "./Landing page/Landingpage";
 import Dashboard from "/src/Dashboard/Layout/Main_Layout.jsx";
-// Pixora-s-Frontend/src/Dashboard/Layout/Main_Layout.jsx
+import OAuthCallback from "../OAuthCallback";
 import Designs from "./Dashboard/_Components/Designs";
 import Viewcode from "./Mainpage/Viewcode";
 import PixoraPlus from "./Dashboard/_Components/PixoraPlus";
@@ -19,6 +19,7 @@ import Chat from "./Dashboard/_Components/Chat";
 import Workspace from "./Workspace/MainWorkspace.jsx";
 import Policy from "/src/Privacy.jsx"
 import Chatcreator from "./Dashboard/_Components/Chat/Chat.jsx";
+import UPIPayment from "/UPIPayment.jsx";
 function App() {
   return (
    <>
@@ -29,6 +30,8 @@ function App() {
       <Routes>
         <Route path="/signin" element={<SignInSignUp />} />
         <Route path="/signup" element={<SignInSignUp isSignUp />} />
+        <Route path="/auth/callback" element={<OAuthCallback />} />
+ <Route path="upi-payment" element={<UPIPayment />} />
         <Route path="/" element={<Landingpage />} />
         <Route
           path="/dashboard"
@@ -45,7 +48,7 @@ function App() {
           <Route path="subscription" element={<PixoraPlus />} />
           <Route path="about" element={<About />} />
           <Route path="Profile" element={<Profile />} />
-         
+        
         </Route>
         {/* <Route path="/generated-code/:id" element={<Generatedcode />} /> */}
         <Route

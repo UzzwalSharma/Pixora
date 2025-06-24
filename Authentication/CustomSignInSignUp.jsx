@@ -120,10 +120,11 @@ export default function CustomSignInSignUp({ isSignUp = false }) {
     setLoading(true);
     try {
       const params = {
-        strategy: provider,
-        redirectUrl: "/",
-        redirectUrlComplete: window.location.origin + "/"
-      };
+  strategy: provider,
+  redirectUrl: window.location.origin + "/auth/callback", // ✨ where errors will be handled
+  redirectUrlComplete: window.location.origin + "/"       // 🎯 after success
+};
+
       if (mode === "signin") {
         await signInObj.signIn.authenticateWithRedirect(params);
       } else {

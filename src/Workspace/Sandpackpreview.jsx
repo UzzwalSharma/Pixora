@@ -5,28 +5,29 @@ const Sandpackpreview = forwardRef((props, ref) => {
   const previewRef = useRef();
   const { sandpack } = useSandpack();
 
-  useImperativeHandle(ref, () => ({
-    getDeployUrl: async () => {
-      try {
-        const client = previewRef.current?.getClient();
-        if (client) {
-          console.log("Getting CodeSandbox client:", client);
+useImperativeHandle(ref, () => ({
+  getDeployUrl: async () => {
+    try {
+      const clients = sandpack.clients;
+      for (const clientId in clients) {
+        const client = clients[clientId];
+        if (client?.getCodeSandboxURL) {
           const result = await client.getCodeSandboxURL();
-          console.log("CodeSandbox result:", result);
-          
           if (result?.sandboxId) {
             const url = `https://${result.sandboxId}.csb.app/`;
-            console.log("🌐 Generated Deploy URL:", url);
+            console.log("🌐 Matched Deploy URL:", url);
             return url;
           }
         }
-        throw new Error("Failed to get CodeSandbox URL");
-      } catch (error) {
-        console.error("Error getting deploy URL:", error);
-        throw error;
       }
+      throw new Error("No valid client with a sandboxId found");
+    } catch (error) {
+      console.error("Error getting deploy URL from clients:", error);
+      throw error;
     }
-  }));
+  }
+}));
+
 
   return (
     <div className="h-full w-full">

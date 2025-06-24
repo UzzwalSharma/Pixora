@@ -287,6 +287,7 @@ export function AnimatedAIChat() {
     const { user, isLoaded } = useUser();
     const navigate = useNavigate();
     const sendMessage = useMutation(api.workspace.sendMessage);
+    const useToken = useMutation(api.workspace.useToken);
 
     useEffect(() => {
         const handleMouseMove = (e) => {
@@ -386,73 +387,72 @@ export function AnimatedAIChat() {
  
 // Updated handleSendMessage function
 const handleSendMessage = async () => {
-    // Check if user is signed in
-    if (!user) {
-        toast.error("You must be signed in to send a message.");
-        return;
-    }
+  if (!user) {
+    toast.error("You must be signed in to send a message.");
+    return;
+  }
 
-    // Check if model is selected
-    if (!selectedModel) {
-        toast.error("Please select an AI model before sending your message.");
-        return;
-    }
+  if (!selectedModel) {
+    toast.error("Please select an AI model before sending your message.");
+    return;
+  }
 
-    if (value.trim() || uploadedImage) {
-        startTransition(() => {
-            setIsTyping(true);
+  if (value.trim() || uploadedImage) {
+    startTransition(() => {
+      setIsTyping(true);
 
-            setTimeout(async () => {
-                try {
-                    // Prepare the message array in the desired format
-                    const message = [
-                        {
-                            content: value.trim(),
-                            role: "user",
-                        },
-                    ];
+      setTimeout(async () => {
+        try {
+          const message = [
+            {
+              content: value.trim(),
+              role: "user",
+            },
+          ];
 
-                    // If an image is uploaded, add it to the message array
-                    if (uploadedImage) {
-                        message.push({
-                            content: uploadedImage.url,
-                            role: "user",
-                            type: "image", // Optional: specify type for image
-                        });
-                    }
+          if (uploadedImage) {
+            message.push({
+              content: uploadedImage.url,
+              role: "user",
+              type: "image",
+            });
+          }
 
-                    console.log("📤 Sending messages:", {
-                        message,
-                        aiModelId: selectedModel,
-                        userName: user.firstName || user.username || user.emailAddress || "Anonymous",
-                    });
+          // 🔥 Step 1: Use a token before sending
+          await useToken({ clerkId: user.id });
 
-                    // Send messages using Convex mutation
-                    const workspaceId = await sendMessage({
-                        message, // Pass the array of messages
-                        aiModelId: selectedModel, // Pass the model ID
-                        userName: user.firstName || user.username || user.emailAddress || "Anonymous",
-                    });
+          // 🔥 Step 2: Proceed with message send if token available
+          const workspaceId = await sendMessage({
+            message,
+            aiModelId: selectedModel,
+            userName:
+              user.firstName ||
+              user.username ||
+              user.emailAddress ||
+              "Anonymous",
+          });
 
-                    console.log("🚀 Workspace created with ID:", workspaceId);
+          console.log("🚀 Workspace created with ID:", workspaceId);
 
-                    // Clear the input and image after successful send
-                    setValue("");
-                    setUploadedImage(null);
-                    adjustHeight(true);
-
-                    // Navigate to the workspace page using the returned ID
-                    navigate(`/workspace/${workspaceId}`);
-                } catch (error) {
-                    console.error("❌ Error sending messages:", error);
-                    toast.error("Failed to send messages: " + error.message);
-                } finally {
-                    setIsTyping(false);
-                }
-            }, 1000);
-        });
-    }
+          setValue("");
+          setUploadedImage(null);
+          adjustHeight(true);
+          navigate(`/workspace/${workspaceId}`);
+        } catch (error) {
+          console.error("❌ Error:", error);
+          if (error.message.includes("out of tokens")) {
+            toast.error("You are out of tokens! Upgrade your plan.");
+          } else {
+            toast.error("Failed to send messages: " + error.message);
+          }
+        } finally {
+          setIsTyping(false);
+        }
+      }, 1000);
+    });
+  }
 };
+
     // Loading state for user authentication
     if (!isLoaded) {
         return (

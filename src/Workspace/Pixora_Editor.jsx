@@ -684,10 +684,10 @@ useEffect(() => {
     ...parsed.files
   }));
 
-  await updateGeneratedCode({
-    workspaceId: id,
-    code: JSON.stringify(parsed),
-  })
+  // await updateGeneratedCode({
+  //   workspaceId: id,
+  //   code: JSON.stringify(parsed),
+  // })
 
 } catch (err) {
   console.error("❌ Still failed to parse generatedCode:", err.message);

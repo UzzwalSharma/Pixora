@@ -44,7 +44,7 @@ const About = () => {
         transition={{ duration: 3, repeat: Infinity, repeatType: "mirror" }}
       >
         <img 
-          src="/about pixora.jpg" 
+          src="/pixorapersona.png" 
           alt="A boy using Pixora on his laptop"
           width={300} 
           height={300} 

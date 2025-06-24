@@ -178,26 +178,82 @@ export const getById = query({
   },
 });
 
-//updateGeneratedCode mutation
-// This mutation allows updating the generated code for a workspace
-export const updateGeneratedCode = mutation({
-  args: {
-    workspaceId: v.id("workspace"),
-    code: v.any(),
-  },
-  handler: async (ctx, args) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) throw new Error("Not authenticated");
 
-    const workspace = await ctx.db.get(args.workspaceId);
-    if (!workspace) {
-      throw new Error("Workspace not found");
+// User signup mutation for token initialization
+export const onUserSignup = mutation({
+  args: { clerkId: v.string() },
+  handler: async (ctx, { clerkId }) => {
+    const existing = await ctx.db
+      .query("users")
+      .withIndex("by_clerkId", q => q.eq("clerkId", clerkId))
+      .first();
+
+    if (!existing) {
+      await ctx.db.insert("users", {
+        clerkId,
+        tokens: 5,
+        plan: "free",
+        lastTokenRefill: Date.now(),
+      });
     }
+  },
+});
 
-    await ctx.db.patch(args.workspaceId, {
-      code: args.code,
+//Token deduction mutation
+export const useToken = mutation({
+  args: { clerkId: v.string() },
+  handler: async (ctx, { clerkId }) => {
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_clerkId", q => q.eq("clerkId", clerkId))
+      .first();
+
+    if (!user) throw new Error("User not found");
+    if (user.tokens <= 0) throw new Error("You are out of tokens!");
+
+    await ctx.db.patch(user._id, {
+      tokens: user.tokens - 1,
     });
 
-    return { success: true, updatedCode: args.code };
+    return { remaining: user.tokens - 1 };
+  },
+});
+
+
+//Getting user by Clerk ID
+export const getUserByClerkId = query({
+  args: { clerkId: v.string() },
+  handler: async (ctx, { clerkId }) => {
+    return await ctx.db
+      .query("users")
+      .withIndex("by_clerkId", (q) => q.eq("clerkId", clerkId))
+      .first();
+  },
+});
+
+
+// Token refill mutation
+export const addTokens = mutation({
+  args: {
+    clerkId: v.string(),
+    amount: v.number(), // number of tokens to add
+  },
+  handler: async (ctx, { clerkId, amount }) => {
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_clerkId", (q) => q.eq("clerkId", clerkId))
+      .first();
+
+    if (!user) {
+      throw new Error("User not found");
+    }
+
+    const newTotal = user.tokens + amount;
+
+    await ctx.db.patch(user._id, {
+      tokens: newTotal,
+    });
+
+    return { tokens: newTotal };
   },
 });

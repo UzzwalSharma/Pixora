@@ -2,20 +2,7 @@ import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 export default defineSchema({
     
-// generatedcodes: defineTable({
-//  imageUrl:  v.optional(v.string()),
-//     userName: v.string(),
-//     description: v.string(),
-//     modelName: v.string(),
-//     code: v.string(),
-//     createdAt: v.number(),
-
-//       uid: v.string(),
-
-// })
-// ,
-
-
+  
   workspace: defineTable({
     userName: v.string(),
     message: v.any(), // Changed from v.any() to v.string() for better type safety
@@ -23,5 +10,16 @@ export default defineSchema({
     imageUrl: v.optional(v.string()), // Added: Optional image URL
    code: v.optional(v.any()),  // for storing generated code
   }),
+
+  users: defineTable({
+  clerkId: v.string(),
+  tokens: v.number(),
+  plan: v.string(),
+  lastTokenRefill: v.number(),
+}).index("by_clerkId", ["clerkId"]),
+
+
+
+
 
 })

@@ -2,6 +2,8 @@ import React from "react";
 import { FaCheck, FaCrown, FaStar, FaRocket } from "react-icons/fa";
 import { motion } from "framer-motion";
 import clsx from "clsx";
+import { useNavigate } from "react-router-dom";
+
 
 const plans = [
   {
@@ -48,6 +50,7 @@ const plans = [
 ];
 
 const PixoraPlus = () => {
+  const navigate = useNavigate(); 
   return (
     <div className="relative p-10 max-w-6xl mx-auto text-center">
       {/* Background blur */}
@@ -109,8 +112,10 @@ const PixoraPlus = () => {
             <motion.button
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => navigate("/upi-payment", { state: { plan: plan.name } })}
               className={`shimmer-button w-full py-3 text-white font-semibold rounded-xl transition-all duration-300 ${plan.buttonStyle} shadow-lg`}
             >
+              
               {plan.buttonText}
             </motion.button>
 

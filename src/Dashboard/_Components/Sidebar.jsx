@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaHome, FaUserAlt, FaCrown, FaInfoCircle, FaLayerGroup, FaPalette } from "react-icons/fa";
+import { DollarSignIcon, Heart } from 'lucide-react';
 
 function Sidebar() {
   const location = useLocation();
@@ -10,7 +11,7 @@ function Sidebar() {
     { path: "/dashboard", icon: <FaLayerGroup />, label: "Workspace" },
     { path: "/dashboard/designs", icon: <FaPalette />, label: "Pixora Designs" },
     { path: "/dashboard/profile", icon: <FaUserAlt />, label: "My Profile" },
-    { path: "/dashboard/subscription", icon: <FaCrown />, label: "Pixora Plus" },
+    { path: "/dashboard/subscription", icon: <DollarSignIcon />, label: "Buy Tokens" },
     { path: "/dashboard/about", icon: <FaInfoCircle />, label: "About Pixora" },
   ];
 
@@ -108,8 +109,8 @@ function Sidebar() {
           <div className="mt-4 text-center">
             <div className="inline-flex items-center space-x-2 px-3 py-2 bg-emerald-500/10 rounded-full 
                            border border-emerald-500/20 backdrop-blur-sm">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.6)]"></div>
-              <span className="text-xs font-medium text-emerald-300/80 tracking-wide">ONLINE</span>
+              {/* <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.6)]"></div> */}
+              <span className="flex gap-2 animate-pulse text-xs font-medium text-emerald-300/80 tracking-wide">Built with <Heart className='text-red-500 fill-red-400'/>By Ujjwal</span>
             </div>
           </div>
         </div>
