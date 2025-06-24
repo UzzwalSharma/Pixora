@@ -160,10 +160,14 @@ const DeploySuccessPopup = ({
                 text-xs flex items-center justify-between
                 ${isDarkMode ? 'text-gray-500' : 'text-gray-400'}
               `}>
-                <div className="flex items-center space-x-1">
-                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                  <span>Deployed via Pixora's Inbuilt Deployment Engine</span>
-                </div>
+                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+  <span className="font-medium">Live via Pixora Deploy</span>
+  <span className="text-xs italic">
+    Heads up: Sometimes the URL shown may differ — check Sandbox Preview if needed.
+  </span>
+</div>
+
                 <span>Ready to share</span>
               </div>
             </div>

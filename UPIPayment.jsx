@@ -34,7 +34,7 @@ const UPIPayment = () => {
       });
 
       if (res.ok) {
-        const tokenAmount = selectedPlan === "Premium" ? 20 : 10;
+        const tokenAmount = selectedPlan === "Premium" ? 10 : 20;
         await addTokens({ clerkId: user.id, amount: tokenAmount });
         toast.success("Submission received! Tokens will be added shortly.");
         setTimeout(() => {
@@ -70,7 +70,7 @@ const UPIPayment = () => {
           Scan the QR code and pay exactly:
           <br />
           <span className="text-lg font-semibold text-green-400">
-            ₹{selectedPlan === "Premium" ? "50" : "299"}
+            ₹{selectedPlan === "Premium" ? "299" : "50"}
           </span>
         </p>
 
