@@ -191,7 +191,7 @@ export const onUserSignup = mutation({
     if (!existing) {
       await ctx.db.insert("users", {
         clerkId,
-        tokens: 5,
+        tokens: 30, // Initial tokens
         plan: "free",
         lastTokenRefill: Date.now(),
       });
