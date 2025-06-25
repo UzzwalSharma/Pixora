@@ -35,14 +35,14 @@ const DesignCard = ({ design }) => {
         </div>
 
         {/* Model Information */}
-        {/* <div className="flex items-center justify-center py-2">
+        <div className="flex items-center justify-center py-2">
           <div className="text-center">
             <span className="text-gray-400 text-xs uppercase tracking-wider">Model</span>
             <h4 className="text-lg font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mt-1">
               {design.modelName}
             </h4>
           </div>
-        </div> */}
+        </div>
 
         {/* Creator Information */}
         <div className="border-t border-green-500/20 pt-4">
@@ -81,21 +81,7 @@ const DesignCard = ({ design }) => {
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
           </button>
 
-          {/* Chat Button */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              console.log("Starting chat with:", design.userName);
-              // navigate(`/chat/${design.userName || design.userId}`);
-              navigate(`/chat`);
-            }}
-            className="cursor-pointer w-full bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-black font-semibold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-amber-500/30 active:scale-[0.98]"
-          >
-            <span className="flex items-center justify-center gap-2">
-              <span>Chat with Creator</span>
-              <span className="text-lg">💬</span>
-            </span>
-          </button>
+          
         </div>
       </div>
 
