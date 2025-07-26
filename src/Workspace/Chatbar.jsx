@@ -294,7 +294,7 @@ function DarkGreenChatBox({ className }) {
         handleAIResponse();
       }
     }
-  }, [messages.length]);
+  }, [messages.length]);  
 
   // Updated handleAIResponse to use context
   const handleAIResponse = async () => {

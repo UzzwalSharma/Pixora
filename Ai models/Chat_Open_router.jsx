@@ -15,12 +15,28 @@ const CHAT_PROMPT = dedent`
 const PROMPT = dedent`
 Generate a complete React project using Vite. Structure code in multiple components with .js extensions, organized into folders. Use Tailwind CSS for styling only. Icons must be from lucide-react (e.g., import { Heart } from "lucide-react" → <Heart className="" />).
 
-✨ Allowed packages:
-- date-fns (date formatting)
-- react-chartjs-2 (charts) — register all required components via ChartJS.register(...)
-- firebase and @google/generative-ai — only if asked
+✅ Rules:
+- Use only lucide-react icons
+- No broken JSX, undefined variables, or missing components
+-All string values must use double quotes ("") to avoid breaking on apostrophes.
+- Do NOT use React.useContext, createContext, or any context API
+- Do NOT invent variables like React2, React3, etc. — always use \`React\` properly
+- Do NOT use \`useOutletContext\`, \`useNavigationContext\`, or other internal router hooks
+- Always wrap routes inside \`<BrowserRouter>\` and \`<Routes>\` if react-router-dom is used
+- Use <Link> from react-router-dom only when needed, and make sure it’s wrapped correctly
+- No destructuring from undefined/null — avoid errors like \`const { something } = null\`
 
-📦 Output JSON format(strictly follow):
+📷 Image Usage:
+- Use real Unsplash image links (e.g., https://images.unsplash.com/...)
+- You may also use https://archive.org/download/placeholder-image/placeholder-image.jpg as a fallback
+
+🎨 UI Expectations:
+- Layout must be responsive
+- Use Tailwind transitions, hover/focus effects, rounded corners
+- Components must be beautiful, production-ready, and polished
+- Use emojis 🎯📊✅ to enhance the UI
+
+📦 Output JSON format (strict):
 {
   "projectTitle": "string",
   "explanation": "string",
@@ -31,37 +47,10 @@ Generate a complete React project using Vite. Structure code in multiple compone
   "generatedFiles": ["/App.js", "/components/ChartCard.js"]
 }
 
-✅ Rules:
-- All imports must resolve and match defined files
-- No broken JSX, undefined variables, or missing components
-- Use emojis 🎯📊✅ for a delightful UI
--Do not invent or misspell package names like 'lide-react', always use real npm packages.
-- Use Unsplash  or https://archive.org/download/placeholder-image/placeholder-image.jpg for images
--Use valid Unsplash image URLs with full links (e.g., https://images.unsplash.com/...) — do NOT use source.unsplash.com or tag-based URLs.
-- Charts must be polished (tooltips, labels, gradients)
-- Use date-fns for formatted output (e.g., format(new Date(), "PPP"))
-- Layouts should be responsive with Tailwind transitions and hover states
-- Components must be visually beautiful and ready for production — no boilerplate
-- All components must be beautiful, production-ready, and polished
-- Use <Link> from react-router-dom for navigation when needed
-- All buttons must be interactive and have hover/focus states
-
-
-✅ Dependencies allowed:
-- tailwindcss, tailwindcss-animate, postcss, autoprefixer, tailwind-merge
-- lucide-react (icons only — import { Icon } from "lucide-react")
-- uuid4 (for IDs), react-router-dom (v7+), firebase (v11+)
-- @google/generative-ai (if asked), date-fns (for formatting)
-- chart.js and react-chartjs-2 (register via ChartJS.register(...))
-- framer-motion, react-spring (for animation), react-intersection-observer
-
-💡 Examples to include:
-- AnalyticsDashboard with <LineChart /> & <BarChart />
-- Data cards with icons and buttons
-- UI should follow Tailwind best practices
-
-Return JSON only. No extra commentary.
+Return valid JSON only. Do NOT include any extra commentary or markdown.
 `;
+
+
 
 // Updated API service to accept conversation history and maintain context
 export async function generateResponse(userMessage, options = {}) {

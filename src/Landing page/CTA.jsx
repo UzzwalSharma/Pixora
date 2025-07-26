@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 function CTA() {
   // Repeat enough items for seamless loop
   const items = Array.from({ length: 10 }).map((_, idx) => (
-    <div key={idx} className="h-10 flex items-center gap-4">
+    <div key={idx} className="h-120 flex items-center gap-4">
      <a
       key={idx}
       href="https://pixora-s-frontend.vercel.app/"

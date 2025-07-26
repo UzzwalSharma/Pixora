@@ -650,7 +650,7 @@ useEffect(() => {
     simulateProgress();
 
     try {
-      const aiModelId = "deepseek/deepseek-chat:free";
+      const aiModelId = "microsoft/mai-ds-r1:free";
       
       const conversationHistory = messages.map(msg => ({
         role: msg.role === "user" ? "user" : "assistant",
@@ -686,10 +686,7 @@ useEffect(() => {
     ...parsed.files
   }));
 
-  // await updateGeneratedCode({
-  //   workspaceId: id,
-  //   code: JSON.stringify(parsed),
-  // })
+  
 
 } catch (err) {
   console.error("❌ Still failed to parse generatedCode:", err.message);
@@ -777,26 +774,19 @@ const forcePreviewRefresh = useCallback(() => {
     recompileDelay: 500,
   }), []);
 
-  const customSetup = useMemo(() => ({
-    dependencies: {
-      postcss: "^8",
-      tailwindcss: "^3.4.1",
-      autoprefixer: "^10.0.0",
-      uuid4: "^2.0.3",
-      "tailwind-merge": "^2.4.0",
-      "tailwindcss-animate": "^1.0.7",
-      "lucide-react": "latest",
-      "react-router-dom": "^7.1.1",
-      firebase: "^11.1.0",
-      "@google/generative-ai": "^0.21.0",
-      "date-fns": "^4.1.0",
-      "react-chartjs-2": "^5.3.0",
-      "chart.js": "^4.4.7",
-      "framer-motion": "^11.0.0",
-      "react-spring": "^9.7.0",
-      "react-intersection-observer": "^9.5.0"
-    },
-  }), []);
+ const customSetup = useMemo(() => ({
+  dependencies: {
+    tailwindcss: "^3.4.1",
+    autoprefixer: "^10.0.0",
+    postcss: "^8",
+    "tailwindcss-animate": "^1.0.7",
+    "tailwind-merge": "^2.4.0",
+    "lucide-react": "latest",
+     "react-router-dom": "^7.1.1",
+      "framer-motion": "^11.0.0"
+  },
+}), []);
+
 
  
 
